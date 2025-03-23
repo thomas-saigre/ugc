@@ -26,19 +26,32 @@ class Cinema:
         self.lat = None
         self.lon = None
         self.are_data_gathered = False
+        self.osm_id = None
 
     def get_infos_from_OSM(self):
-        data_nominatim = request_OSM_data(f"https://nominatim.openstreetmap.org/search?q={self.name}&format=json")
+        url = f"https://nominatim.openstreetmap.org/search?q={self.name}&format=json"
+        data_nominatim = request_OSM_data(url)
         if data_nominatim:
+            data_nominatim = [item for item in data_nominatim if item.get('type') == 'cinema']
             if len(data_nominatim) > 1:
-                print(f"Multiple results found for {self.name}, please check results !")
-            osm_id = data_nominatim[0]['osm_id']
+                print(f"Multiple results found for {self.name}, please check from {url}")
+            if len(data_nominatim) == 0:
+                print(f"No result found for {self.name}, please check from {url} (hash: {self.hash})")
+                return None
+            self.osm_id = data_nominatim[0]['osm_id']
             osm_type = data_nominatim[0]['osm_type']
 
-            data_osm = request_OSM_data(f"https://api.openstreetmap.org/api/0.6/{osm_type}/{osm_id}.json")
+            url = f"https://api.openstreetmap.org/api/0.6/{osm_type}/{self.osm_id}.json"
+            data_osm = request_OSM_data(url)
 
             try:
                 self.website = data_osm['elements'][0]['tags'].get('website', None)
+                if not self.website:
+                    self.website = data_osm['elements'][0]['tags'].get('contact:website', None)
+                    if not self.website:
+                        self.website = data_osm['elements'][0]['tags'].get('brand:website', None)
+                        if not self.website:
+                            print(f"Failed to retrieve website for {self.name} on {url}")
                 self.lat = data_nominatim[0]['lat']
                 self.lon = data_nominatim[0]['lon']
             except:
@@ -72,14 +85,30 @@ class UI:
         for cinema in self.cinemas:
             if cinema.are_data_gathered:
                 data.append({
-                    cinema.hash: {
+                        'hash': cinema.hash,
                         'name': cinema.name,
                         'address': cinema.address,
                         'website': cinema.website,
                         'lat': cinema.lat,
-                        'lon': cinema.lon
-                    }
+                        'lon': cinema.lon,
+                        'osm_id': cinema.osm_id
                 })
+        with open(file, 'w', encoding='utf-8') as f:
+            json.dump(data, f, indent=2)
+
+    def import_data(self, file):
+        with open(file, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+
+        for cinema in self.cinemas:
+            for entry in data:
+                if cinema.hash == entry['hash']:
+                    cinema.website = entry['website']
+                    cinema.lat = entry['lat']
+                    cinema.lon = entry['lon']
+                    cinema.osm_id = entry['osm_id']
+                    cinema.are_data_gathered = True
+
 
         with open(file, 'w', encoding='utf-8') as f:
             json.dump(data, f, indent=2)
@@ -88,28 +117,36 @@ class UI:
         return len(self.cinemas)
 
     def get_infos_for_all_cinemas(self, export_file=None, export_at_each_step=False):
+        """Get infos for all cinemas
+
+        Args:
+            export_file (str, optional): Path to the file where previous data are stored. For an empty file, create a file with only [] in it. Defaults to None.
+            export_at_each_step (bool, optional): Update export_file at each step. Defaults to False.
+        """
         data = []
         if export_file:
+            self.import_data(export_file)
             with open(export_file, 'r', encoding='utf-8') as f:
                 data = json.load(f)
         for cinema in self.cinemas:
-            if any(cinema.hash in entry for entry in data):
+            # print(f"Getting data for {cinema.name}")
+            hash_list = [entry['hash'] for entry in data]
+            if cinema.hash in hash_list:
+                # print(f"       Data already gathered for {cinema.name}")
                 continue
             else:
                 cinema.get_infos_from_OSM()
                 if cinema.are_data_gathered:
                     data.append({
-                        cinema.hash: {
+                            'hash': cinema.hash,
                             'name': cinema.name,
                             'address': cinema.address,
                             'website': cinema.website,
                             'lat': cinema.lat,
                             'lon': cinema.lon
-                        }
                     })
                     if export_at_each_step and export_file:
-                        with open(export_file, 'w', encoding='utf-8') as f:
-                            json.dump(data, f, indent=2)
+                        self.export_data(export_file)
 
 
 
@@ -118,4 +155,4 @@ class UI:
 
 
 c = UI('cinemas-acceptant-ui.html')
-c.get_infos_for_all_cinemas('cinemas.json', export_at_each_step=True)
+data = c.get_infos_for_all_cinemas('cinemas.json', export_at_each_step=True)
