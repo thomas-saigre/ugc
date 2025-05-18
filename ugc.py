@@ -3,6 +3,8 @@ import time
 import json
 import hashlib
 from bs4 import BeautifulSoup
+import folium
+from folium.plugins import MarkerCluster
 
 
 def request_OSM_data(url, headers={'User-Agent': 'UI-map/1.0 (https://github.com/thomas-saigre/ugc)'}):
@@ -27,6 +29,7 @@ class Cinema:
         self.lon = None
         self.are_data_gathered = False
         self.osm_id = None
+        self.checked = False
 
     def get_infos_from_OSM(self):
         url = f"https://nominatim.openstreetmap.org/search?q={self.name}&format=json"
@@ -69,7 +72,6 @@ class UI:
     def __init__(self, file):
         self.get_cinemas(file)
 
-
     def __getitem__(self, index):
         return self.cinemas[index]
 
@@ -91,7 +93,8 @@ class UI:
                         'website': cinema.website,
                         'lat': cinema.lat,
                         'lon': cinema.lon,
-                        'osm_id': cinema.osm_id
+                        'osm_id': cinema.osm_id,
+                        'checked': cinema.checked,
                 })
         with open(file, 'w', encoding='utf-8') as f:
             json.dump(data, f, indent=2)
@@ -108,6 +111,7 @@ class UI:
                     cinema.lon = entry['lon']
                     cinema.osm_id = entry['osm_id']
                     cinema.are_data_gathered = True
+                    cinema.checked = entry['checked']
 
 
         with open(file, 'w', encoding='utf-8') as f:
@@ -116,7 +120,7 @@ class UI:
     def __len__(self):
         return len(self.cinemas)
 
-    def get_infos_for_all_cinemas(self, export_file=None, export_at_each_step=False):
+    def get_infos_for_all_cinemas(self, export_file=None, export_at_each_step=False, load_file=False):
         """Get infos for all cinemas
 
         Args:
@@ -124,7 +128,7 @@ class UI:
             export_at_each_step (bool, optional): Update export_file at each step. Defaults to False.
         """
         data = []
-        if export_file:
+        if load_file:
             self.import_data(export_file)
             with open(export_file, 'r', encoding='utf-8') as f:
                 data = json.load(f)
@@ -143,16 +147,65 @@ class UI:
                             'address': cinema.address,
                             'website': cinema.website,
                             'lat': cinema.lat,
-                            'lon': cinema.lon
+                            'lon': cinema.lon,
+                            'checked': cinema.checked,
                     })
                     if export_at_each_step and export_file:
                         self.export_data(export_file)
 
 
+class Map:
 
+    def __init__(self, ui: UI):
+        self.ui = ui
 
+    def get_buttons_str(self, cities=["Strasbourg", "Paris"], latitudes=[48.5734, 48.8566], longitudes=[7.7521, 2.3522], zooms=[15, 13]):
+        buttons = '<div style="position: fixed; top: 10px; left: 50px; z-index: 1000;">\n'
+        for city, lat, lon, zoom in zip(cities, latitudes, longitudes, zooms):
+            buttons += f"  <button onclick='jumpToCity({lat}, {lon}, {zoom})'>{city}</button>\n"
+        buttons += '</div>\n'
+        return buttons
+
+    def draw_map(self, name="map0.html"):
+
+        m = folium.Map(location=[46.603354, 1.888334], zoom_start=6)
+        marker_cluster = MarkerCluster().add_to(m)
+
+        for cinema in self.ui.cinemas:
+            if cinema.are_data_gathered:
+                popup = f"<a href='{cinema.website}'>{cinema.name}</a><br>{cinema.address}"
+                folium.Marker(
+                    [cinema.lat, cinema.lon],
+                    popup=popup,
+                    # icon=folium.Icon(color='green') if cinema.checked else folium.Icon(color='red'),
+                    icon=folium.Icon(color='darkblue', icon="film") if cinema.checked else folium.Icon(color='blue', icon="film"),
+                ).add_to(marker_cluster)
+
+        folium.LayerControl().add_to(m)
+
+        # Add buttons for zooming to specific cities with absolute positioning using JavaScript
+        buttons_html = """
+<div style="position: fixed; top: 10px; left: 50px; z-index: 1000;">
+    <button onclick="jumpToCity(48.5797, 7.7521, 16)">Strasbourg</button>
+    <button onclick="jumpToCity(48.8566, 2.3522, 12)">Paris</button>
+</div>
+<script>
+    function jumpToCity(lat, lng, zoom) {
+        var map = Object.values(window).find(obj => obj instanceof L.Map);
+        if (map) {
+            map.setView([lat, lng], zoom);
+        }
+    }
+</script>
+"""
+        m.get_root().html.add_child(folium.Element(buttons_html))
+
+        m.save(name)
 
 
 
 c = UI('cinemas-acceptant-ui.html')
-data = c.get_infos_for_all_cinemas('cinemas.json', export_at_each_step=True)
+data = c.get_infos_for_all_cinemas('cinemas.json', export_at_each_step=True, load_file=True)
+
+map = Map(c)
+map.draw_map()
