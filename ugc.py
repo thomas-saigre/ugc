@@ -200,6 +200,14 @@ class Map:
 """
         m.get_root().html.add_child(folium.Element(buttons_html))
 
+        # Add a text at the bottom left of the page
+        text_html = """
+        <div style="position: fixed; bottom: 10px; left: 10px; z-index: 1000; background-color: white; padding: 5px; border-radius: 5px; box-shadow: 0px 0px 5px rgba(0,0,0,0.5);">
+            Bleu foncé : La position du cinéma a été vérifiée manuellement<br>
+        </div>
+        """
+        m.get_root().html.add_child(folium.Element(text_html))
+
         m.save(name)
 
 
