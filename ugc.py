@@ -5,6 +5,8 @@ import hashlib
 from bs4 import BeautifulSoup
 import folium
 from folium.plugins import MarkerCluster
+from geopy.geocoders import Nominatim
+import re
 
 
 def request_OSM_data(url, headers={'User-Agent': 'UI-map/1.0 (https://github.com/thomas-saigre/ugc)'}):
@@ -17,6 +19,48 @@ def request_OSM_data(url, headers={'User-Agent': 'UI-map/1.0 (https://github.com
         print(f"Failed to retrieve data from {url}, error {response.status_code}")
         print(response.text)
         return None
+
+def clean_address(address):
+    """Cleans the address by removing level information and extra whitespace.
+    Example:
+        clean_address("Forum des Halles - Niveau -3 75001 PARIS") = "Forum des Halles - 75001 PARIS"
+
+    Args:
+        address (str): The address string to be cleaned.
+
+    Returns:
+        str: cleaned address
+    """
+    # Remove level information using regular expressions
+    # This pattern matches common ways to denote levels or floors, including standalone hyphens
+    cleaned_address = re.sub(r'(\s*[-–]\s*\d+|\bNiveau\b|\bLevel\b|\bFloor\b|\bEtage\b)', '', address, flags=re.IGNORECASE)
+    cleaned_address = cleaned_address.replace('Palais des Congrès', '')
+    # Remove any extra whitespace
+    cleaned_address = ' '.join(cleaned_address.split())
+    return cleaned_address
+
+def get_coordinates(address):
+    time.sleep(1)
+    geolocator = Nominatim(user_agent="geoapi")
+    cleaned_address = clean_address(address)
+
+    try:
+        location = geolocator.geocode(cleaned_address)
+
+        if location:
+            return (location.latitude, location.longitude)
+        else:
+            return None
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return None
+
+def check_coordinates(test_coordinates, real_coordinates, threshold=0.01):
+    if abs(float(test_coordinates[0]) - real_coordinates[0]) < threshold and abs(float(test_coordinates[1]) - real_coordinates[1]) < threshold:
+        return True
+    else:
+        print(f"Coordinates for do not match: OSM ({test_coordinates[0]}, {test_coordinates[1]}), Geocoder ({real_coordinates[0]}, {real_coordinates[1]})")
+        return False
 
 class Cinema:
 
@@ -34,20 +78,27 @@ class Cinema:
     def get_infos_from_OSM(self):
         url = f"https://nominatim.openstreetmap.org/search?q={self.name}&format=json"
         data_nominatim = request_OSM_data(url)
+
+        coordinates = get_coordinates(self.address)
+        if coordinates is None:
+            warning_msg = f"Failed to retrieve coordinates for {self.name} at {clean_address(self.address)}"
+            print(warning_msg)
+
         if data_nominatim:
             data_nominatim = [item for item in data_nominatim if item.get('type') == 'cinema']
-            if len(data_nominatim) > 1:
-                print(f"Multiple results found for {self.name}, please check from {url}")
+
             if len(data_nominatim) == 0:
-                print(f"No result found for {self.name}, please check from {url} (hash: {self.hash})")
-                return None
-            self.osm_id = data_nominatim[0]['osm_id']
-            osm_type = data_nominatim[0]['osm_type']
+                print(f"No cinema found for {self.name}. Please check manually.")
+                return
 
-            url = f"https://api.openstreetmap.org/api/0.6/{osm_type}/{self.osm_id}.json"
-            data_osm = request_OSM_data(url)
+            for item in data_nominatim:
+                to_check = False
+                osm_id = item.get('osm_id')
+                osm_type = item.get('osm_type')
 
-            try:
+                url = f"https://api.openstreetmap.org/api/0.6/{osm_type}/{osm_id}.json"
+                data_osm = request_OSM_data(url)
+
                 self.website = data_osm['elements'][0]['tags'].get('website', None)
                 if not self.website:
                     self.website = data_osm['elements'][0]['tags'].get('contact:website', None)
@@ -55,11 +106,29 @@ class Cinema:
                         self.website = data_osm['elements'][0]['tags'].get('brand:website', None)
                         if not self.website:
                             print(f"Failed to retrieve website for {self.name} on {url}")
-                self.lat = data_nominatim[0]['lat']
-                self.lon = data_nominatim[0]['lon']
-            except:
-                print(f"Failed to retrieve data for {self.name}")
-                return None
+                lat = data_nominatim[0]['lat']
+                lon = data_nominatim[0]['lon']
+
+                if coordinates is None:
+                    print(f"Coordinates for {self.name} at {clean_address(self.address)} could not be retrieved. Using OSM coordinates, {len(data_nominatim)} were found")
+                    to_check = Trueto_check = True
+                    if len(data_nominatim) == 1:
+                        print(f"\tUsing the only result found: {data_nominatim[0]['display_name']}")
+                    else:
+                        print(f"\tUsing the first result found: {data_nominatim[0]['display_name']}. Please check manually if this is the correct one.")
+
+
+                    coordinates = (float(lat), float(lon))
+
+                if check_coordinates((lat, lon), coordinates):
+                    self.lat = lat
+                    self.lon = lon
+                    self.osm_id = osm_id
+                    self.checked = not to_check
+                    break
+
+                if item == data_nominatim[-1]:
+                    print(f"Reached the last OSM result for {self.name} and no matching coordinates were found. Please check manually.")
             self.are_data_gathered = True
 
     def set_hash(self):
@@ -174,6 +243,9 @@ class Map:
         for cinema in self.ui.cinemas:
             if cinema.are_data_gathered:
                 popup = f"<a href='{cinema.website}'>{cinema.name}</a><br>{cinema.address}"
+                # dans la mer si on n'a pas de coordonnée
+                if cinema.lat is None: cinema.lat = 46.91931896308067
+                if cinema.lon is None: cinema.lon = -2.7073753368667157
                 folium.Marker(
                     [cinema.lat, cinema.lon],
                     popup=popup,
