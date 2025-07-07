@@ -88,7 +88,7 @@ class Cinema:
             data_nominatim = [item for item in data_nominatim if item.get('type') == 'cinema']
 
             if len(data_nominatim) == 0:
-                print(f"No cinema found for {self.name}. Please check manually.")
+                print(f"No cinema found for {self.name}. Please check manually. Hash is {self.hash}")
                 return
 
             for item in data_nominatim:
@@ -105,7 +105,7 @@ class Cinema:
                     if not self.website:
                         self.website = data_osm['elements'][0]['tags'].get('brand:website', None)
                         if not self.website:
-                            print(f"Failed to retrieve website for {self.name} on {url}")
+                            print(f"Failed to retrieve website for {self.name} on {url}. Hash is {self.hash}")
                 lat = data_nominatim[0]['lat']
                 lon = data_nominatim[0]['lon']
 
@@ -128,7 +128,15 @@ class Cinema:
                     break
 
                 if item == data_nominatim[-1]:
-                    print(f"Reached the last OSM result for {self.name} and no matching coordinates were found. Please check manually.")
+                    print(f"Reached the last OSM result for {self.name} and no matching coordinates were found. Please check manually. Hash is {self.hash}")
+            self.are_data_gathered = True
+
+        else:
+            self.checked = False
+            self.lat = None
+            self.lon = None
+            self.osm_id = None
+            self.website = None
             self.are_data_gathered = True
 
     def set_hash(self):
@@ -235,7 +243,7 @@ class Map:
         buttons += '</div>\n'
         return buttons
 
-    def draw_map(self, name="map0.html"):
+    def draw_map(self, name="map.html"):
 
         m = folium.Map(location=[46.603354, 1.888334], zoom_start=6)
         marker_cluster = MarkerCluster().add_to(m)
@@ -255,6 +263,8 @@ class Map:
 
         folium.LayerControl().add_to(m)
 
+
+
         # Add buttons for zooming to specific cities with absolute positioning using JavaScript
         buttons_html = """
 <div style="position: fixed; top: 10px; left: 50px; z-index: 1000;">
@@ -272,11 +282,13 @@ class Map:
 """
         m.get_root().html.add_child(folium.Element(buttons_html))
 
+        today = time.strftime("%Y-%m-%d")
+
         # Add a text at the bottom left of the page
-        text_html = """
+        text_html = f"""
         <div style="position: fixed; bottom: 10px; left: 10px; z-index: 1000; background-color: white; padding: 5px; border-radius: 5px; box-shadow: 0px 0px 5px rgba(0,0,0,0.5);">
-            Bleu foncé : La position du cinéma a été vérifiée manuellement<br>
             Source : <a href="https://www.ugc.fr/cinemas-acceptant-ui.html">ugc.fr</a><br>
+            Date : {today}
         </div>
         """
         m.get_root().html.add_child(folium.Element(text_html))

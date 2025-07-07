@@ -490,6 +490,16 @@
     "checked": true
   },
   {
+    "hash": "fe957d8f57c314740f073a1bb1e0a7fc",
+    "name": "LES SEPT PARNASSIENS",
+    "address": "98 Boulevard du Montparnasse 75014 PARIS",
+    "website": "https://www.parnassiens.com/",
+    "lat": "48.8424152",
+    "lon": "2.3276286",
+    "osm_id": 319851795,
+    "checked": true
+  },
+  {
     "hash": "bbadcda6233f444c1349e8c890fab5ca",
     "name": "CHAPLIN DENFERT",
     "address": "24 Place Denfert Rochereau 75014 PARIS",
@@ -690,6 +700,26 @@
     "checked": true
   },
   {
+    "hash": "9c1f4728ce2d098bd7c6f996f66bfe37",
+    "name": "UGC Le Majestic",
+    "address": "11 Place Henri IV 77100 MEAUX",
+    "website": "https://www.ugc.fr/cinema-ugc-le-majestic.html",
+    "lat": "48.9595301",
+    "lon": "2.8827296",
+    "osm_id": 165824713,
+    "checked": true
+  },
+  {
+    "hash": "5ce20d8ee79920a1c9fe393c022b3324",
+    "name": "CINEMA LE STUDIO",
+    "address": "2 rue Edouard Poisson 93300 AUBERVILLIERS",
+    "website": "https://lestudio-aubervilliers.fr/",
+    "lat": "48.9107503",
+    "lon": "2.3839544",
+    "osm_id": 146866373,
+    "checked": true
+  },
+  {
     "hash": "ae4485f2c555c7b22c8b0038e7358be7",
     "name": "LES 3 PIERROTS",
     "address": "6 Rue du Mont Val\u00e9rien 92210 SAINT-CLOUD",
@@ -710,6 +740,26 @@
     "checked": true
   },
   {
+    "hash": "1435e78580dc5ec0ae198b9bcd33a6fa",
+    "name": "CIN\u00c9MA LOUIS JOUVET",
+    "address": "3 place Maurice Berteaux 78400 CHATOU",
+    "website": "https://www.cinechatou.fr/",
+    "lat": "48.8868384",
+    "lon": "2.1562778",
+    "osm_id": 157129138,
+    "checked": true
+  },
+  {
+    "hash": "6217de3bae6a62abecf7d7026d1320f5",
+    "name": "CIN\u00c9MA RUTEBEUF",
+    "address": "16/18 All\u00e9e L\u00e9on Gambetta 92110 CLICHY",
+    "website": "https://www.ville-clichy.fr/119-theatre-rutebeuf-clichy.htm",
+    "lat": "48.901857",
+    "lon": "2.309369",
+    "osm_id": 1147086,
+    "checked": true
+  },
+  {
     "hash": "c21f96ed12e8426af9c7b2e9b9443c28",
     "name": "CENTRE DES BORDS DE MARNE",
     "address": "2 Rue de la Prairie 94170 LE PERREUX-SUR-MARNE",
@@ -717,6 +767,16 @@
     "lat": "48.8467691",
     "lon": "2.5102565",
     "osm_id": 6935212027,
+    "checked": true
+  },
+  {
+    "hash": "5c530d3f09be837d9f0a15a1ef451beb",
+    "name": "L'ATALANTE",
+    "address": "48 rue du Prieur\u00e9 78600 MAISONS-LAFFITTE",
+    "website": "https://atalante-cinema.org/",
+    "lat": "48.9463965",
+    "lon": "2.1471878",
+    "osm_id": 1412979992,
     "checked": true
   },
   {
@@ -730,6 +790,16 @@
     "checked": true
   },
   {
+    "hash": "bd95e13d68edbafb15a0515e351b3a88",
+    "name": "CIN\u00c9MA L'EDEN",
+    "address": "5 rue de Pontoise 95160 MONTMORENCY",
+    "website": "https://montmocine.fr/",
+    "lat": "48.988786",
+    "lon": "2.318040",
+    "osm_id": 143635692,
+    "checked": true
+  },
+  {
     "hash": "57678b78c6f375223132361550fab5fd",
     "name": "LE ROYAL PALACE",
     "address": "165, Grande Rue Charles de Gaulle 94130 NOGENT SUR MARNE",
@@ -737,6 +807,26 @@
     "lat": "48.8385685",
     "lon": "2.4892995",
     "osm_id": 120428015,
+    "checked": true
+  },
+  {
+    "hash": "187f66db99be485074cbd5f7faf048b8",
+    "name": "LE BIJOU",
+    "address": "4, place de la Lib\u00e9ration 93160 NOISY LE GRAND",
+    "website": "https://www.cinema-lebijou.fr/",
+    "lat": "48.8486594",
+    "lon": "2.5531904",
+    "osm_id": 1259317930,
+    "checked": true
+  },
+  {
+    "hash": "1db0db51c5bfa2b7d1a43fe0db9ab218",
+    "name": "ARIEL RUEIL",
+    "address": "99, avenue Paul Doumer 92500 RUEIL MALMAISON",
+    "website": "https://www.cinerueil.fr/ariel-hauts-de-rueil/",
+    "lat": "48.8621243",
+    "lon": "2.1955006",
+    "osm_id": 158066340,
     "checked": true
   },
   {
@@ -790,6 +880,16 @@
     "checked": true
   },
   {
+    "hash": "c14f349117bcf99c2e316274adab6a9a",
+    "name": "LE CAPITOLE",
+    "address": "3, rue Ledru-Rollin 92150 SURESNES",
+    "website": "https://cinema-lecapitole.com/",
+    "lat": "48.8705516",
+    "lon": "2.2287072",
+    "osm_id": 143713700,
+    "checked": true
+  },
+  {
     "hash": "4603d626acd5a6723185c9e491c71bf7",
     "name": "L'ANTARES",
     "address": "1 Place du C\u0153ur Battant 95490 VAUREAL",
@@ -807,6 +907,16 @@
     "lat": "48.7910333",
     "lon": "2.3881983",
     "osm_id": 2046139096,
+    "checked": true
+  },
+  {
+    "hash": "beba4bb9bdcc3b97caf7decedcdfccdf",
+    "name": "UGC Cin\u00e9 Cit\u00e9 Bordeaux Gambetta",
+    "address": "13-15, rue Georges Bonnac 33000 BORDEAUX",
+    "website": "https://www.ugc.fr/cinema.html?id=1",
+    "lat": "44.840544",
+    "lon": "-0.581935",
+    "osm_id": 268627218,
     "checked": true
   },
   {
@@ -847,6 +957,16 @@
     "lat": "44.5441738",
     "lon": "-0.2643645",
     "osm_id": 738661097,
+    "checked": true
+  },
+  {
+    "hash": "4820e7c3ca87867a83527bbc8c933202",
+    "name": "GRAND ECRAN LANGON RIO CENTRE-VILLE",
+    "address": "16 all\u00e9e Jean Jaur\u00e8s 33210 LANGON",
+    "website": "https://www.grandecran.fr",
+    "lat": "44.552851",
+    "lon": "-0.244883",
+    "osm_id": 78079896,
     "checked": true
   },
   {
@@ -950,6 +1070,16 @@
     "checked": true
   },
   {
+    "hash": "c948940086f99c20bc89d22ab5ba2c8b",
+    "name": "LES LUMI\u00c8RES",
+    "address": "1 Rue de la Gare 59280 ARMENTI\u00c8RES",
+    "website": "http://cine-armentieres.fr/",
+    "lat": "50.6819429",
+    "lon": "2.8783525",
+    "osm_id": 158545945,
+    "checked": true
+  },
+  {
     "hash": "58c0864dfc703e26bd3007cf4b805bf7",
     "name": "Cin\u00e9ma Le Palace",
     "address": "5 rue des Fr\u00e8res Marcy 59400 CAMBRAI",
@@ -987,6 +1117,16 @@
     "lat": "45.8542614",
     "lon": "1.2848794",
     "osm_id": 70373180,
+    "checked": true
+  },
+  {
+    "hash": "45f8adb271cc093a400373ad0ad5326f",
+    "name": "HORIZON GRAND ECRAN",
+    "address": "9 - 11, Place Denis Dussoubs 87100 LIMOGES",
+    "website": "https://www.grandecran.fr",
+    "lat": "45.832872",
+    "lon": "1.255247",
+    "osm_id": 70675187,
     "checked": true
   },
   {
@@ -1110,16 +1250,6 @@
     "checked": true
   },
   {
-    "hash": "0d19a687b7bb6779f22f1970f2d14b78",
-    "name": "LE STAR",
-    "address": "27, rue du Jeu des Enfants 67000 STRASBOURG",
-    "website": "https://www.cinema-star.com",
-    "lat": "48.5837834",
-    "lon": "7.7426566",
-    "osm_id": 633029057,
-    "checked": true
-  },
-  {
     "hash": "e0491e7bf81e8e83e5e7aa884ff2cafe",
     "name": "LE COSMOS",
     "address": "3, rue des Francs-Bourgeois 67000 STRASBOURG",
@@ -1127,6 +1257,16 @@
     "lat": "48.5826499",
     "lon": "7.7459938",
     "osm_id": 163991622,
+    "checked": true
+  },
+  {
+    "hash": "0d19a687b7bb6779f22f1970f2d14b78",
+    "name": "LE STAR",
+    "address": "27, rue du Jeu des Enfants 67000 STRASBOURG",
+    "website": "https://www.cinema-star.com",
+    "lat": "48.5837834",
+    "lon": "7.7426566",
+    "osm_id": 633029057,
     "checked": true
   },
   {
@@ -1147,6 +1287,76 @@
     "lat": "43.5714625",
     "lon": "1.4784928",
     "osm_id": 8779265398,
+    "checked": true
+  },
+  {
+    "hash": "457925d9d5012fdd52cfdc34e2a9a2fa",
+    "name": "LE ROYAL",
+    "address": "18, rue Saint Livier 54130 SAINT MAX",
+    "website": "http://www.cinema-royal.com/",
+    "lat": "48.6997282",
+    "lon": "6.2082530",
+    "osm_id": 2589666580,
+    "checked": true
+  },
+  {
+    "hash": "a9b91f28b3d09d6c091c2852dcb6c487",
+    "name": "JEAN MARAIS",
+    "address": " 59 boulevard Carnot 78110 LE V\u00c9SINET",
+    "website": "https://vesinet.org/le-cinema/",
+    "lat": "48.8939122",
+    "lon": "2.1343389",
+    "osm_id": 1605098025,
+    "checked": true
+  },
+  {
+    "hash": "59ca398bb9a3e339a2b98c6ea263f7a8",
+    "name": "LOUIS DAQUIN",
+    "address": "Place Gabriel P\u00e9ri - 16 mail Debr\u00e9 Berhan 93150 LE BLANC-MESNIL",
+    "website": "https://www.cinemadublancmesnil.fr/",
+    "lat": "48.9382227",
+    "lon": "2.4624069",
+    "osm_id": 2580116475,
+    "checked": true
+  },
+  {
+    "hash": "2386cc9a6534d7965e564836c07918af",
+    "name": "LA PLEIADE",
+    "address": "12, avenue Cousin de M\u00e9ricourt 94230 CACHAN",
+    "website": "https://www.cinema-lapleiade.fr/",
+    "lat": "48.796726",
+    "lon": "2.334560",
+    "osm_id": 63652372,
+    "checked": true
+  },
+  {
+    "hash": "87bb06572f701225688c3e4e5a377e71",
+    "name": "Le Central",
+    "address": "Square de la Mairie 91190 GIF SUR YVETTE",
+    "website": "https://www.ugc.fr/cinema.html?id=47",
+    "lat": "48.701967",
+    "lon": "2.133480",
+    "osm_id": 63446823,
+    "checked": true
+  },
+  {
+    "hash": "bffcda84b805821b418205cc4d2aa61d",
+    "name": "MAC MAHON",
+    "address": "5, avenue Mac Mahon 75017 Paris",
+    "website": "https://www.cinemamacmahon1938.com/",
+    "lat": "48.8755476",
+    "lon": "2.2944347",
+    "osm_id": 1428083261,
+    "checked": true
+  },
+  {
+    "hash": "2fbf5d5f3eac2858e7b85c791031ab3b",
+    "name": "LE SAINT-ANDR\u00c9 DES ARTS",
+    "address": "30 rue Saint Andr\u00e9 des arts 75006 Paris",
+    "website": "https://cinemasaintandre.com/",
+    "lat": "48.8533737",
+    "lon": "2.3421249",
+    "osm_id": 1427978194,
     "checked": true
   }
 ]

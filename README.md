@@ -33,7 +33,8 @@ Le programme automatique comporte quelques failles (par exemple si plusieurs cin
 
 ## Notes for some cinemas
 
--
+The code is not perfect : some cinemas are not corectly found, or not found at all.
+This is a small proportion of them (around 20), so the author choose to manually fix the corresponding entries.
 
 
 
@@ -45,7 +46,7 @@ After having downloaded the page `cinemas-acceptant-ui.html` (and saved it under
 python3 ugc.py
 ```
 
-For some cinemas, something could have gone wrong (issue in the requests, cinema not found, etc...), in some cases the cinema will be included in the database, but with `checked = False`, as the program was not able to check if everythin was correct.
+For some cinemas, something could have gone wrong (issue in the requests, cinema not found, etc...), in some cases the cinema will be included in the database, but with `checked = False`, as the program was not able to check if everything was correct.
 The cinema not checked appear in light blue on the map.
 
 If the code is run again with the file `cinemas.json` present in the directory, it won't re-searche for them again.
