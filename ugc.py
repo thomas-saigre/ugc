@@ -7,6 +7,7 @@ import folium
 from folium.plugins import MarkerCluster
 from geopy.geocoders import Nominatim
 import re
+import sys
 
 
 def request_OSM_data(url, headers={'User-Agent': 'UI-map/1.0 (https://github.com/thomas-saigre/ugc)'}):
@@ -296,9 +297,15 @@ class Map:
         m.save(name)
 
 
+if __name__ == "__main__":
 
-c = UI('cinemas-acceptant-ui.html')
-data = c.get_infos_for_all_cinemas('cinemas.json', export_at_each_step=True, load_file=True)
+    if len(sys.argv) > 1:
+        map_filename = sys.argv[1]
+    else:
+        map_filename = "map.html"
 
-map = Map(c)
-map.draw_map()
+    c = UI('cinemas-acceptant-ui.html')
+    data = c.get_infos_for_all_cinemas('cinemas.json', export_at_each_step=True, load_file=True)
+
+    map = Map(c)
+    map.draw_map(map_filename)
