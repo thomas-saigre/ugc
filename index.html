@@ -1,0 +1,3790 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_a1887ddcaa10f4818a0963ae5d7af56d {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.Default.css"/>
+</head>
+<body>
+    
+    
+<div style="position: fixed; top: 10px; left: 50px; z-index: 1000;">
+    <button onclick="jumpToCity(48.5797, 7.7521, 16)">Strasbourg</button>
+    <button onclick="jumpToCity(48.8566, 2.3522, 12)">Paris</button>
+</div>
+<script>
+    function jumpToCity(lat, lng, zoom) {
+        var map = Object.values(window).find(obj => obj instanceof L.Map);
+        if (map) {
+            map.setView([lat, lng], zoom);
+        }
+    }
+</script>
+    
+        <div style="position: fixed; bottom: 10px; left: 10px; z-index: 1000; background-color: white; padding: 5px; border-radius: 5px; box-shadow: 0px 0px 5px rgba(0,0,0,0.5);">
+            Source : <a href="https://www.ugc.fr/cinemas-acceptant-ui.html">ugc.fr</a><br>
+            Date : 2025-07-08
+        </div>
+        
+    
+            <div class="folium-map" id="map_a1887ddcaa10f4818a0963ae5d7af56d" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_a1887ddcaa10f4818a0963ae5d7af56d = L.map(
+                "map_a1887ddcaa10f4818a0963ae5d7af56d",
+                {
+                    center: [46.603354, 1.888334],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 6,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_632cf9f7366abb3b3e870b6a391fe62c = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_632cf9f7366abb3b3e870b6a391fe62c.addTo(map_a1887ddcaa10f4818a0963ae5d7af56d);
+        
+    
+            var marker_cluster_435d56008a89a6146b6d9056f603943a = L.markerClusterGroup(
+                {}
+            );
+        
+    
+            var marker_2e2d4a5cc9d8de8f54525a6736932835 = L.marker(
+                [48.8625986, 2.3435961],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_9688c409a161f0f9f232ae12591df4e8 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_2e2d4a5cc9d8de8f54525a6736932835.setIcon(icon_9688c409a161f0f9f232ae12591df4e8);
+        
+    
+        var popup_192446443f3000d8febab985faa352c9 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_242eb24373cc42811807f137baa50f5d = $(`<div id="html_242eb24373cc42811807f137baa50f5d" style="width: 100.0%; height: 100.0%;"><a href='https://www.ugc.fr/cinema.html?id=10'>UGC Ciné Cité Les Halles</a><br>Forum des Halles - Niveau -3 75001 PARIS</div>`)[0];
+                popup_192446443f3000d8febab985faa352c9.setContent(html_242eb24373cc42811807f137baa50f5d);
+            
+        
+
+        marker_2e2d4a5cc9d8de8f54525a6736932835.bindPopup(popup_192446443f3000d8febab985faa352c9)
+        ;
+
+        
+    
+    
+            var marker_12526060d88442a82b304e004e4b2255 = L.marker(
+                [48.8799338, 2.284076],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_2d6d401d5d3a6ca20782ff0373d69e3a = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_12526060d88442a82b304e004e4b2255.setIcon(icon_2d6d401d5d3a6ca20782ff0373d69e3a);
+        
+    
+        var popup_f74e37af4014fdd11585f255cb130d6f = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_9643f5185e5055910d55dad911e0049d = $(`<div id="html_9643f5185e5055910d55dad911e0049d" style="width: 100.0%; height: 100.0%;"><a href='https://www.ugc.fr/cinema.html?id=7'>UGC Ciné Cité Maillot</a><br>2, place de la Porte Maillot - Palais des Congrès - Niveau -1 75017 PARIS</div>`)[0];
+                popup_f74e37af4014fdd11585f255cb130d6f.setContent(html_9643f5185e5055910d55dad911e0049d);
+            
+        
+
+        marker_12526060d88442a82b304e004e4b2255.bindPopup(popup_f74e37af4014fdd11585f255cb130d6f)
+        ;
+
+        
+    
+    
+            var marker_a4c53ce48321960fab270ec0ff13e501 = L.marker(
+                [48.8434993, 2.3257407],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_2cc1aa0d083daf8c3c6b1dc3a2e34b52 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_a4c53ce48321960fab270ec0ff13e501.setIcon(icon_2cc1aa0d083daf8c3c6b1dc3a2e34b52);
+        
+    
+        var popup_2b6d6d1891dac1a7ccb1e7205ee412a6 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_df1786e6ad73f352caeb71f28b1f0447 = $(`<div id="html_df1786e6ad73f352caeb71f28b1f0447" style="width: 100.0%; height: 100.0%;"><a href='https://www.ugc.fr/cinema.html?id=14'>UGC Montparnasse</a><br>83, boulevard du Montparnasse 75006 PARIS</div>`)[0];
+                popup_2b6d6d1891dac1a7ccb1e7205ee412a6.setContent(html_df1786e6ad73f352caeb71f28b1f0447);
+            
+        
+
+        marker_a4c53ce48321960fab270ec0ff13e501.bindPopup(popup_2b6d6d1891dac1a7ccb1e7205ee412a6)
+        ;
+
+        
+    
+    
+            var marker_624a7f37c1a798e8773c855cfdab3bd4 = L.marker(
+                [48.8424534, 2.3289276],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_19863caf50dddc08348dfb7e95aa3f8b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_624a7f37c1a798e8773c855cfdab3bd4.setIcon(icon_19863caf50dddc08348dfb7e95aa3f8b);
+        
+    
+        var popup_0d3bfe701895326dd2893a30fd0506fa = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_f4cd0a3767819d3542dde57d2b38d018 = $(`<div id="html_f4cd0a3767819d3542dde57d2b38d018" style="width: 100.0%; height: 100.0%;"><a href='https://www.ugc.fr/cinema.html?id=15'>UGC Rotonde</a><br>103, boulevard du Montparnasse 75006 PARIS</div>`)[0];
+                popup_0d3bfe701895326dd2893a30fd0506fa.setContent(html_f4cd0a3767819d3542dde57d2b38d018);
+            
+        
+
+        marker_624a7f37c1a798e8773c855cfdab3bd4.bindPopup(popup_0d3bfe701895326dd2893a30fd0506fa)
+        ;
+
+        
+    
+    
+            var marker_33f058c021e0c2e81a7e05a8ee46726d = L.marker(
+                [48.8523614, 2.3398708],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_48cdc2e36f7c560a0f9305e424e46d57 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_33f058c021e0c2e81a7e05a8ee46726d.setIcon(icon_48cdc2e36f7c560a0f9305e424e46d57);
+        
+    
+        var popup_b5e8c85fd24529d61c111348d60e7b2b = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_c229a7ee969c8e9bcdcce4a7022e2a12 = $(`<div id="html_c229a7ee969c8e9bcdcce4a7022e2a12" style="width: 100.0%; height: 100.0%;"><a href='https://www.ugc.fr/cinema.html?id=13'>UGC Odéon</a><br>124, boulevard Saint-Germain 75006 PARIS</div>`)[0];
+                popup_b5e8c85fd24529d61c111348d60e7b2b.setContent(html_c229a7ee969c8e9bcdcce4a7022e2a12);
+            
+        
+
+        marker_33f058c021e0c2e81a7e05a8ee46726d.bindPopup(popup_b5e8c85fd24529d61c111348d60e7b2b)
+        ;
+
+        
+    
+    
+            var marker_2714abccf5b0285353c917b5e128eb82 = L.marker(
+                [48.8521335, 2.3389545],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_1a9858f0003370b7f4513e7c77e1fdf4 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_2714abccf5b0285353c917b5e128eb82.setIcon(icon_1a9858f0003370b7f4513e7c77e1fdf4);
+        
+    
+        var popup_4bf471dfd5b80b36b67f135c6c31c4b5 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_61f3a35659c4e16724094ffa1c4222b0 = $(`<div id="html_61f3a35659c4e16724094ffa1c4222b0" style="width: 100.0%; height: 100.0%;"><a href='https://www.ugc.fr/cinema.html?id=4'>UGC Danton</a><br>99, boulevard Saint-Germain 75006 PARIS</div>`)[0];
+                popup_4bf471dfd5b80b36b67f135c6c31c4b5.setContent(html_61f3a35659c4e16724094ffa1c4222b0);
+            
+        
+
+        marker_2714abccf5b0285353c917b5e128eb82.bindPopup(popup_4bf471dfd5b80b36b67f135c6c31c4b5)
+        ;
+
+        
+    
+    
+            var marker_e663503241a33d9cbf2011b3164c3f90 = L.marker(
+                [48.8321816, 2.3852909],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_76c31f4888b0b908c2aaa34fd16d66c6 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_e663503241a33d9cbf2011b3164c3f90.setIcon(icon_76c31f4888b0b908c2aaa34fd16d66c6);
+        
+    
+        var popup_de5f43c00ef31e23eeed58d2b9ee95ef = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_c0728adbf9cbc9bf15a32e75b4f4c75c = $(`<div id="html_c0728adbf9cbc9bf15a32e75b4f4c75c" style="width: 100.0%; height: 100.0%;"><a href='https://www.ugc.fr/cinema.html?id=12'>UGC Ciné Cité Bercy</a><br>2, cour Saint Emilion 75012 PARIS</div>`)[0];
+                popup_de5f43c00ef31e23eeed58d2b9ee95ef.setContent(html_c0728adbf9cbc9bf15a32e75b4f4c75c);
+            
+        
+
+        marker_e663503241a33d9cbf2011b3164c3f90.bindPopup(popup_de5f43c00ef31e23eeed58d2b9ee95ef)
+        ;
+
+        
+    
+    
+            var marker_dd519bbb08d25670bd4f9b07fe145743 = L.marker(
+                [48.8475201, 2.3719469],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_0cd3323371ae421626261c716d228a51 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_dd519bbb08d25670bd4f9b07fe145743.setIcon(icon_0cd3323371ae421626261c716d228a51);
+        
+    
+        var popup_619fa16db9c7ce64d8cbb2db65ee42a0 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_ec647d741e3b9ba7ad3683c43bdbe63c = $(`<div id="html_ec647d741e3b9ba7ad3683c43bdbe63c" style="width: 100.0%; height: 100.0%;"><a href='https://www.ugc.fr/cinema.html?id=11'>UGC Lyon Bastille</a><br>12, rue de Lyon 75012 PARIS</div>`)[0];
+                popup_619fa16db9c7ce64d8cbb2db65ee42a0.setContent(html_ec647d741e3b9ba7ad3683c43bdbe63c);
+            
+        
+
+        marker_dd519bbb08d25670bd4f9b07fe145743.bindPopup(popup_619fa16db9c7ce64d8cbb2db65ee42a0)
+        ;
+
+        
+    
+    
+            var marker_313a172cd0589a9bb93fa18e979244b1 = L.marker(
+                [48.8328449, 2.3541908],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_d7d7cb22c9f2d66e71fb53bc30432f91 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_313a172cd0589a9bb93fa18e979244b1.setIcon(icon_d7d7cb22c9f2d66e71fb53bc30432f91);
+        
+    
+        var popup_79fe8a5840a686d230bf5dd3c1f91f9c = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_c2b0575767632be333a26fcffac03c74 = $(`<div id="html_c2b0575767632be333a26fcffac03c74" style="width: 100.0%; height: 100.0%;"><a href='https://www.ugc.fr/cinema.html?id=5'>UGC Gobelins</a><br>66 bis, avenue des Gobelins 75013 PARIS</div>`)[0];
+                popup_79fe8a5840a686d230bf5dd3c1f91f9c.setContent(html_c2b0575767632be333a26fcffac03c74);
+            
+        
+
+        marker_313a172cd0589a9bb93fa18e979244b1.bindPopup(popup_79fe8a5840a686d230bf5dd3c1f91f9c)
+        ;
+
+        
+    
+    
+            var marker_8d91ee62deaf2ea007eb5b7b70223310 = L.marker(
+                [48.8713746, 2.3353089],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_82011533e17266a0d37f845e172e4c1d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_8d91ee62deaf2ea007eb5b7b70223310.setIcon(icon_82011533e17266a0d37f845e172e4c1d);
+        
+    
+        var popup_52563cb28be7335a6b0cbdcec23a076a = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_882d34992da3d5dcaadb0a114beefe6f = $(`<div id="html_882d34992da3d5dcaadb0a114beefe6f" style="width: 100.0%; height: 100.0%;"><a href='https://www.ugc.fr/cinema.html?id=9'>UGC Opéra</a><br>32, boulevard des Italiens 75009 PARIS</div>`)[0];
+                popup_52563cb28be7335a6b0cbdcec23a076a.setContent(html_882d34992da3d5dcaadb0a114beefe6f);
+            
+        
+
+        marker_8d91ee62deaf2ea007eb5b7b70223310.bindPopup(popup_52563cb28be7335a6b0cbdcec23a076a)
+        ;
+
+        
+    
+    
+            var marker_092c0491f8015026305c47c0da768251 = L.marker(
+                [48.8994069, 2.3767892],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_5febfcfb827d2f3fe2b0c5e68962df43 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_092c0491f8015026305c47c0da768251.setIcon(icon_5febfcfb827d2f3fe2b0c5e68962df43);
+        
+    
+        var popup_312bc91439c53b1707e466bedf83a757 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_68fb1d477c7ca6c73f0de0bb936c5d92 = $(`<div id="html_68fb1d477c7ca6c73f0de0bb936c5d92" style="width: 100.0%; height: 100.0%;"><a href='https://www.ugc.fr/cinema.html?id=37'>UGC Ciné Cité Paris 19</a><br>166, Boulevard Macdonald 75019 PARIS</div>`)[0];
+                popup_312bc91439c53b1707e466bedf83a757.setContent(html_68fb1d477c7ca6c73f0de0bb936c5d92);
+            
+        
+
+        marker_092c0491f8015026305c47c0da768251.bindPopup(popup_312bc91439c53b1707e466bedf83a757)
+        ;
+
+        
+    
+    
+            var marker_1ed19c5ca8de02cb48c8ab3ecc27f637 = L.marker(
+                [48.8615738, 2.3524143],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_022ef2203f0db6b9f46e89a4b9805bc8 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_1ed19c5ca8de02cb48c8ab3ecc27f637.setIcon(icon_022ef2203f0db6b9f46e89a4b9805bc8);
+        
+    
+        var popup_aa266f2eb3680c6e93409c932cc70e2a = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_c35448bdf71b9b3427b4170d36c52912 = $(`<div id="html_c35448bdf71b9b3427b4170d36c52912" style="width: 100.0%; height: 100.0%;"><a href='https://www.mk2.com/salle/mk2-beaubourg'>MK2 BEAUBOURG</a><br>50, rue Rambuteau 75003 PARIS</div>`)[0];
+                popup_aa266f2eb3680c6e93409c932cc70e2a.setContent(html_c35448bdf71b9b3427b4170d36c52912);
+            
+        
+
+        marker_1ed19c5ca8de02cb48c8ab3ecc27f637.bindPopup(popup_aa266f2eb3680c6e93409c932cc70e2a)
+        ;
+
+        
+    
+    
+            var marker_f83ccfa9c7184e90cfbcb51ac1b2bd08 = L.marker(
+                [48.8524157, 2.3382646],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_42d2b0d6e99b8a46fb3a6a7d09dee021 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_f83ccfa9c7184e90cfbcb51ac1b2bd08.setIcon(icon_42d2b0d6e99b8a46fb3a6a7d09dee021);
+        
+    
+        var popup_2c4091eed751e76b8b865651e97f4bbd = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_b19ef11825e13db333b79d50b1b6c17b = $(`<div id="html_b19ef11825e13db333b79d50b1b6c17b" style="width: 100.0%; height: 100.0%;"><a href='https://www.mk2.com/salles/mk2-odeon-0'>MK2 ODEON (CÔTÉ ST GERMAIN)</a><br>113, boulevard Saint Germain 75005 PARIS</div>`)[0];
+                popup_2c4091eed751e76b8b865651e97f4bbd.setContent(html_b19ef11825e13db333b79d50b1b6c17b);
+            
+        
+
+        marker_f83ccfa9c7184e90cfbcb51ac1b2bd08.bindPopup(popup_2c4091eed751e76b8b865651e97f4bbd)
+        ;
+
+        
+    
+    
+            var marker_315ec8f2dd2ecf1f3795e18c6fa9e437 = L.marker(
+                [48.8521797, 2.3428666],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_469bded7c64bcb01f4e52ec176e7a9e8 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_315ec8f2dd2ecf1f3795e18c6fa9e437.setIcon(icon_469bded7c64bcb01f4e52ec176e7a9e8);
+        
+    
+        var popup_69a383b9de24ca36f1f5eb168f2e7b0e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_44ad7d8899447aff01d62bad42804ab6 = $(`<div id="html_44ad7d8899447aff01d62bad42804ab6" style="width: 100.0%; height: 100.0%;"><a href='https://www.mk2.com/salles/mk2-odeon-0'>MK2 ODEON (CÔTÉ ST MICHEL)</a><br>7, rue Hautefeuille 75006 PARIS</div>`)[0];
+                popup_69a383b9de24ca36f1f5eb168f2e7b0e.setContent(html_44ad7d8899447aff01d62bad42804ab6);
+            
+        
+
+        marker_315ec8f2dd2ecf1f3795e18c6fa9e437.bindPopup(popup_69a383b9de24ca36f1f5eb168f2e7b0e)
+        ;
+
+        
+    
+    
+            var marker_1187e02b7fa8f9b596d02c61fc7a1841 = L.marker(
+                [48.842839, 2.330617],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_0fa96ee2ae22cca52b7c8d705d3505f4 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_1187e02b7fa8f9b596d02c61fc7a1841.setIcon(icon_0fa96ee2ae22cca52b7c8d705d3505f4);
+        
+    
+        var popup_5b49f5edabe42340fefe9cf9003e4b21 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_500d513424ece74090619ac5a57c73bb = $(`<div id="html_500d513424ece74090619ac5a57c73bb" style="width: 100.0%; height: 100.0%;"><a href='https://www.mk2.com/salle/mk2-parnasse'>MK2 PARNASSE</a><br>11, rue Jules Chaplain 75006 PARIS</div>`)[0];
+                popup_5b49f5edabe42340fefe9cf9003e4b21.setContent(html_500d513424ece74090619ac5a57c73bb);
+            
+        
+
+        marker_1187e02b7fa8f9b596d02c61fc7a1841.bindPopup(popup_5b49f5edabe42340fefe9cf9003e4b21)
+        ;
+
+        
+    
+    
+            var marker_8a7b0a848ee841d61134db875818b275 = L.marker(
+                [48.8546337, 2.3690906],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_5e8e623201f78aa724729ad2563d9db7 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_8a7b0a848ee841d61134db875818b275.setIcon(icon_5e8e623201f78aa724729ad2563d9db7);
+        
+    
+        var popup_901ffe21595a36dea7d7dd21620f5d46 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_aca687817112bcb35bcf876ed57b46f2 = $(`<div id="html_aca687817112bcb35bcf876ed57b46f2" style="width: 100.0%; height: 100.0%;"><a href='https://www.mk2.com/salle/mk2-bastille-beaumarchais-fg-st-antoine'>MK2 BASTILLE (CÔTÉ BEAUMARCHAIS)</a><br>4, boulevard Beaumarchais 75011 PARIS</div>`)[0];
+                popup_901ffe21595a36dea7d7dd21620f5d46.setContent(html_aca687817112bcb35bcf876ed57b46f2);
+            
+        
+
+        marker_8a7b0a848ee841d61134db875818b275.bindPopup(popup_901ffe21595a36dea7d7dd21620f5d46)
+        ;
+
+        
+    
+    
+            var marker_da558422082631da82940aac870873e8 = L.marker(
+                [48.8531618, 2.3707603],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_481f9a0c0a295c9a494e878c9ca356f5 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_da558422082631da82940aac870873e8.setIcon(icon_481f9a0c0a295c9a494e878c9ca356f5);
+        
+    
+        var popup_77afff55f8279208048a6a5f1d4e9315 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_8e2e1ffe87b53da329d74221a8e82659 = $(`<div id="html_8e2e1ffe87b53da329d74221a8e82659" style="width: 100.0%; height: 100.0%;"><a href='https://www.mk2.com/salles/mk2-bastille-beaumarchais-fg-st-antoine'>MK2 BASTILLE (CÔTÉ FG SAINT ANTOINE)</a><br>5 rue du Faubourg Saint Antoine 75011 PARIS</div>`)[0];
+                popup_77afff55f8279208048a6a5f1d4e9315.setContent(html_8e2e1ffe87b53da329d74221a8e82659);
+            
+        
+
+        marker_da558422082631da82940aac870873e8.bindPopup(popup_77afff55f8279208048a6a5f1d4e9315)
+        ;
+
+        
+    
+    
+            var marker_519a59d1c3395b7c5c7889b402b97abe = L.marker(
+                [48.8482399, 2.3931394],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_a4a4ee9a4d265d2e20202961b75ca5c1 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_519a59d1c3395b7c5c7889b402b97abe.setIcon(icon_a4a4ee9a4d265d2e20202961b75ca5c1);
+        
+    
+        var popup_eab97a638e4d1b731d654452819a6fc3 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_2c139f3ede71246adcdade8fb4a533c4 = $(`<div id="html_2c139f3ede71246adcdade8fb4a533c4" style="width: 100.0%; height: 100.0%;"><a href='https://www.mk2.com/salle/mk2-nation'>MK2 NATION</a><br>133, boulevard Diderot 75012 PARIS</div>`)[0];
+                popup_eab97a638e4d1b731d654452819a6fc3.setContent(html_2c139f3ede71246adcdade8fb4a533c4);
+            
+        
+
+        marker_519a59d1c3395b7c5c7889b402b97abe.bindPopup(popup_eab97a638e4d1b731d654452819a6fc3)
+        ;
+
+        
+    
+    
+            var marker_cd6ff86e71d19e0341fb4241833e701b = L.marker(
+                [48.832448, 2.3754885],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_e41a80cf8d9293b2e456fd82ae4724b6 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_cd6ff86e71d19e0341fb4241833e701b.setIcon(icon_e41a80cf8d9293b2e456fd82ae4724b6);
+        
+    
+        var popup_e8701ac0fd723de720d8e88b8b36326e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_fdb23721c23027620d2601ba60979eac = $(`<div id="html_fdb23721c23027620d2601ba60979eac" style="width: 100.0%; height: 100.0%;"><a href='https://www.mk2.com/salle/mk2-bibliotheque'>MK2 BIBLIOTHEQUE</a><br>128/162, avenue de France 75013 PARIS</div>`)[0];
+                popup_e8701ac0fd723de720d8e88b8b36326e.setContent(html_fdb23721c23027620d2601ba60979eac);
+            
+        
+
+        marker_cd6ff86e71d19e0341fb4241833e701b.bindPopup(popup_e8701ac0fd723de720d8e88b8b36326e)
+        ;
+
+        
+    
+    
+            var marker_7713a9f14e0552c5edacadd9c549d04b = L.marker(
+                [48.8840983, 2.3719967],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_82147b0e981289597a697a54bbf6c315 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_7713a9f14e0552c5edacadd9c549d04b.setIcon(icon_82147b0e981289597a697a54bbf6c315);
+        
+    
+        var popup_e2e8c1045899103a2d0e5ceb5f10e516 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_9d88cf5a97165adb730ea5b6bff29457 = $(`<div id="html_9d88cf5a97165adb730ea5b6bff29457" style="width: 100.0%; height: 100.0%;"><a href='https://www.mk2.com/salle/mk2-quai-seine-quai-loire'>MK2 QUAI DE LOIRE</a><br>7, quai de Loire 75019 PARIS</div>`)[0];
+                popup_e2e8c1045899103a2d0e5ceb5f10e516.setContent(html_9d88cf5a97165adb730ea5b6bff29457);
+            
+        
+
+        marker_7713a9f14e0552c5edacadd9c549d04b.bindPopup(popup_e2e8c1045899103a2d0e5ceb5f10e516)
+        ;
+
+        
+    
+    
+            var marker_773fccb87e6219e1f2ba4b2d685bad9b = L.marker(
+                [48.885007, 2.3714599],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_8b5da1642548efaeec969870898f3533 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_773fccb87e6219e1f2ba4b2d685bad9b.setIcon(icon_8b5da1642548efaeec969870898f3533);
+        
+    
+        var popup_963b06be70098138f78618aff3595381 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_db8f533806d93aa8c66ab52a655578ee = $(`<div id="html_db8f533806d93aa8c66ab52a655578ee" style="width: 100.0%; height: 100.0%;"><a href='https://www.mk2.com/salle/mk2-quai-seine-quai-loire'>MK2 QUAI DE SEINE</a><br>14, quai de la Seine 75019 PARIS</div>`)[0];
+                popup_963b06be70098138f78618aff3595381.setContent(html_db8f533806d93aa8c66ab52a655578ee);
+            
+        
+
+        marker_773fccb87e6219e1f2ba4b2d685bad9b.bindPopup(popup_963b06be70098138f78618aff3595381)
+        ;
+
+        
+    
+    
+            var marker_f1af8c25d10e690819127fc0faa9fcbc = L.marker(
+                [48.8646257, 2.3995268],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_2d798918ca56b809064928401b916aa4 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_f1af8c25d10e690819127fc0faa9fcbc.setIcon(icon_2d798918ca56b809064928401b916aa4);
+        
+    
+        var popup_9190e99736fc69236ba43da1f183deee = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_506125740b81c1b4125c1b4cc55b3da7 = $(`<div id="html_506125740b81c1b4125c1b4cc55b3da7" style="width: 100.0%; height: 100.0%;"><a href='https://www.mk2.com/salle/mk2-gambetta'>MK2 GAMBETTA</a><br>6, rue Belgrand 75020 PARIS</div>`)[0];
+                popup_9190e99736fc69236ba43da1f183deee.setContent(html_506125740b81c1b4125c1b4cc55b3da7);
+            
+        
+
+        marker_f1af8c25d10e690819127fc0faa9fcbc.bindPopup(popup_9190e99736fc69236ba43da1f183deee)
+        ;
+
+        
+    
+    
+            var marker_5b33dbd7068687018917b8c6ab537cbf = L.marker(
+                [48.870532, 2.347649],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_d005ac8c1b14483f61777e4cb25f7cb6 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_5b33dbd7068687018917b8c6ab537cbf.setIcon(icon_d005ac8c1b14483f61777e4cb25f7cb6);
+        
+    
+        var popup_990f12004b8d4446bf6d9952291ed2f4 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_04575ca3df928fe9d37575440f320c8c = $(`<div id="html_04575ca3df928fe9d37575440f320c8c" style="width: 100.0%; height: 100.0%;"><a href='https://www.legrandrex.com'>LE GRAND REX - LE REX</a><br>1, faubourg Poissonnière 75002 PARIS</div>`)[0];
+                popup_990f12004b8d4446bf6d9952291ed2f4.setContent(html_04575ca3df928fe9d37575440f320c8c);
+            
+        
+
+        marker_5b33dbd7068687018917b8c6ab537cbf.bindPopup(popup_990f12004b8d4446bf6d9952291ed2f4)
+        ;
+
+        
+    
+    
+            var marker_9153b9931d42cc0e63b4e7219620c8e3 = L.marker(
+                [48.8586559, 2.3536069],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_8b33da16ebcb3ecbfd25ca0a0b9f4340 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_9153b9931d42cc0e63b4e7219620c8e3.setIcon(icon_8b33da16ebcb3ecbfd25ca0a0b9f4340);
+        
+    
+        var popup_8e275cd44d567c489822a9c7c48792d4 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_003eece49f3b6a6fcdcc1121275a6cf9 = $(`<div id="html_003eece49f3b6a6fcdcc1121275a6cf9" style="width: 100.0%; height: 100.0%;"><a href='https://www.luminor-hoteldeville.com'>LUMINOR HOTEL DE VILLE</a><br>20, rue du Temple 75004 PARIS</div>`)[0];
+                popup_8e275cd44d567c489822a9c7c48792d4.setContent(html_003eece49f3b6a6fcdcc1121275a6cf9);
+            
+        
+
+        marker_9153b9931d42cc0e63b4e7219620c8e3.bindPopup(popup_8e275cd44d567c489822a9c7c48792d4)
+        ;
+
+        
+    
+    
+            var marker_03e7f26ffaa9994d26319b881422dc07 = L.marker(
+                [48.847467, 2.3424636],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_7db109a7fe354b14ea7f7d731fe16e44 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_03e7f26ffaa9994d26319b881422dc07.setIcon(icon_7db109a7fe354b14ea7f7d731fe16e44);
+        
+    
+        var popup_cdc2939c1d2f034b23425fc1fffd4e6f = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_2e6ff6f3cdd69f914e140ee2e49909fd = $(`<div id="html_2e6ff6f3cdd69f914e140ee2e49909fd" style="width: 100.0%; height: 100.0%;"><a href='https://www.whynotproductions.fr/pantheon/'>CINEMA DU PANTHEON</a><br>13, rue Victor Cousin 75005 PARIS</div>`)[0];
+                popup_cdc2939c1d2f034b23425fc1fffd4e6f.setContent(html_2e6ff6f3cdd69f914e140ee2e49909fd);
+            
+        
+
+        marker_03e7f26ffaa9994d26319b881422dc07.bindPopup(popup_cdc2939c1d2f034b23425fc1fffd4e6f)
+        ;
+
+        
+    
+    
+            var marker_3ca3c85f71a88c9c85c9a3f469e94e88 = L.marker(
+                [48.8483619, 2.3489766],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_0a8cfc83c947937443856adbefec1997 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_3ca3c85f71a88c9c85c9a3f469e94e88.setIcon(icon_0a8cfc83c947937443856adbefec1997);
+        
+    
+        var popup_66710a45e7c53e9c64282f55b1b5e5cd = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_76607615bbe7c9da63c2f9f5f621431a = $(`<div id="html_76607615bbe7c9da63c2f9f5f621431a" style="width: 100.0%; height: 100.0%;"><a href='https://pariscinemaclub.com/ecoles/'>ÉCOLES CINÉMA CLUB</a><br>25, rue des Ecoles 75005 PARIS</div>`)[0];
+                popup_66710a45e7c53e9c64282f55b1b5e5cd.setContent(html_76607615bbe7c9da63c2f9f5f621431a);
+            
+        
+
+        marker_3ca3c85f71a88c9c85c9a3f469e94e88.bindPopup(popup_66710a45e7c53e9c64282f55b1b5e5cd)
+        ;
+
+        
+    
+    
+            var marker_f2593dabd09858fc4f1be84e134e9914 = L.marker(
+                [48.8412698, 2.3495453],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_0adc0a9356f41f8682aaea422d6f5d71 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_f2593dabd09858fc4f1be84e134e9914.setIcon(icon_0adc0a9356f41f8682aaea422d6f5d71);
+        
+    
+        var popup_25c339400a597e109ce9d08096db89be = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_683f0d5b8aad8858adf04fe181de066b = $(`<div id="html_683f0d5b8aad8858adf04fe181de066b" style="width: 100.0%; height: 100.0%;"><a href='https://www.cine-epeedebois.fr/'>ÉPÉE DE BOIS</a><br>100 rue Mouffetard 75005 PARIS</div>`)[0];
+                popup_25c339400a597e109ce9d08096db89be.setContent(html_683f0d5b8aad8858adf04fe181de066b);
+            
+        
+
+        marker_f2593dabd09858fc4f1be84e134e9914.bindPopup(popup_25c339400a597e109ce9d08096db89be)
+        ;
+
+        
+    
+    
+            var marker_7dffc389589b278043370f4d28f6987b = L.marker(
+                [48.8530712, 2.3442898],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_c368a94f426c2c631f816a417af5c3fb = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_7dffc389589b278043370f4d28f6987b.setIcon(icon_c368a94f426c2c631f816a417af5c3fb);
+        
+    
+        var popup_d540cb5ee810559e936258bc9bd94a09 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_c0e4567d86c42b7c4e1375b92966d9cb = $(`<div id="html_c0e4567d86c42b7c4e1375b92966d9cb" style="width: 100.0%; height: 100.0%;"><a href='http://cinemasaintmichel.free.fr/'>ESPACE SAINT MICHEL</a><br>7, place Saint Michel 75005 PARIS</div>`)[0];
+                popup_d540cb5ee810559e936258bc9bd94a09.setContent(html_c0e4567d86c42b7c4e1375b92966d9cb);
+            
+        
+
+        marker_7dffc389589b278043370f4d28f6987b.bindPopup(popup_d540cb5ee810559e936258bc9bd94a09)
+        ;
+
+        
+    
+    
+            var marker_e834eaff5d8ec72e623f2861aa7d89bc = L.marker(
+                [48.8494965, 2.3428666],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_ff80dd54ac58ebf89c2d9b96c33f256d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_e834eaff5d8ec72e623f2861aa7d89bc.setIcon(icon_ff80dd54ac58ebf89c2d9b96c33f256d);
+        
+    
+        var popup_c8e56fe922d4ed76a3bf228077af6aa2 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_0ae765bd5815f5bd95b44b342715b37b = $(`<div id="html_0ae765bd5815f5bd95b44b342715b37b" style="width: 100.0%; height: 100.0%;"><a href='https://www.lafilmotheque.fr/'>LA FILMOTHEQUE QUARTIER LATIN</a><br>9, rue Champollion 75005 PARIS</div>`)[0];
+                popup_c8e56fe922d4ed76a3bf228077af6aa2.setContent(html_0ae765bd5815f5bd95b44b342715b37b);
+            
+        
+
+        marker_e834eaff5d8ec72e623f2861aa7d89bc.bindPopup(popup_c8e56fe922d4ed76a3bf228077af6aa2)
+        ;
+
+        
+    
+    
+            var marker_011a9d28b48962e74574d6d43c7bf947 = L.marker(
+                [48.8499668, 2.3431463],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_2f0069b3bd75d12b34f650350fe621bb = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_011a9d28b48962e74574d6d43c7bf947.setIcon(icon_2f0069b3bd75d12b34f650350fe621bb);
+        
+    
+        var popup_d9aa2388c6ab1b73d3e0e559a4aabc45 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_05d508a65b44a78d2fc14cec405766d2 = $(`<div id="html_05d508a65b44a78d2fc14cec405766d2" style="width: 100.0%; height: 100.0%;"><a href='http://www.cinema-lechampo.com/'>LE CHAMPO</a><br>51, rue des écoles 75005 PARIS</div>`)[0];
+                popup_d9aa2388c6ab1b73d3e0e559a4aabc45.setContent(html_05d508a65b44a78d2fc14cec405766d2);
+            
+        
+
+        marker_011a9d28b48962e74574d6d43c7bf947.bindPopup(popup_d9aa2388c6ab1b73d3e0e559a4aabc45)
+        ;
+
+        
+    
+    
+            var marker_7fcc1fd996ec9c95c5d0ee2c795db22c = L.marker(
+                [48.8475212, 2.3521266],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_d40f9176c643872176354fb53f3ea29e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_7fcc1fd996ec9c95c5d0ee2c795db22c.setIcon(icon_d40f9176c643872176354fb53f3ea29e);
+        
+    
+        var popup_9b056791c974f7a933d1ad099fabebf9 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_83bca989946ef5cb87198476f265e2f0 = $(`<div id="html_83bca989946ef5cb87198476f265e2f0" style="width: 100.0%; height: 100.0%;"><a href='http://www.legrandaction.com/'>LE GRAND ACTION</a><br>5, rue des Ecoles 75005 PARIS</div>`)[0];
+                popup_9b056791c974f7a933d1ad099fabebf9.setContent(html_83bca989946ef5cb87198476f265e2f0);
+            
+        
+
+        marker_7fcc1fd996ec9c95c5d0ee2c795db22c.bindPopup(popup_9b056791c974f7a933d1ad099fabebf9)
+        ;
+
+        
+    
+    
+            var marker_670cb3ab4465913cd0093c52a91f3618 = L.marker(
+                [48.8497506, 2.3430251],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_2354843e206355a2ee18d6950fe15bf1 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_670cb3ab4465913cd0093c52a91f3618.setIcon(icon_2354843e206355a2ee18d6950fe15bf1);
+        
+    
+        var popup_91415bdfdb941d911d621dc3d8a25d40 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d9bfbf55376cbfe631e668f7813202a2 = $(`<div id="html_d9bfbf55376cbfe631e668f7813202a2" style="width: 100.0%; height: 100.0%;"><a href='https://dulaccinemas.com/cinema/reflet-medicis/2950'>LE REFLET MEDICIS</a><br>3/7, rue Champollion 75005 PARIS</div>`)[0];
+                popup_91415bdfdb941d911d621dc3d8a25d40.setContent(html_d9bfbf55376cbfe631e668f7813202a2);
+            
+        
+
+        marker_670cb3ab4465913cd0093c52a91f3618.bindPopup(popup_91415bdfdb941d911d621dc3d8a25d40)
+        ;
+
+        
+    
+    
+            var marker_f2b7d8aeaa520fde5dce8aa3f7f29512 = L.marker(
+                [48.8516341, 2.3471068],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_ef1fc0a5a5b35c79f18b54b11bf90f9b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_f2b7d8aeaa520fde5dce8aa3f7f29512.setIcon(icon_ef1fc0a5a5b35c79f18b54b11bf90f9b);
+        
+    
+        var popup_fc346a8350f27e14897bf1243db9eef4 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_10fdd79f34f8c2bb5f67764377f94f89 = $(`<div id="html_10fdd79f34f8c2bb5f67764377f94f89" style="width: 100.0%; height: 100.0%;"><a href='http://www.studiogalande.fr/'>STUDIO GALANDE</a><br>42 Rue Galande 75005 PARIS</div>`)[0];
+                popup_fc346a8350f27e14897bf1243db9eef4.setContent(html_10fdd79f34f8c2bb5f67764377f94f89);
+            
+        
+
+        marker_f2b7d8aeaa520fde5dce8aa3f7f29512.bindPopup(popup_fc346a8350f27e14897bf1243db9eef4)
+        ;
+
+        
+    
+    
+            var marker_18fffe63f87b74dc6c30aeb48cddaad2 = L.marker(
+                [48.8427477, 2.3420612],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_8324c9579d8840471af510e7e30353cb = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_18fffe63f87b74dc6c30aeb48cddaad2.setIcon(icon_8324c9579d8840471af510e7e30353cb);
+        
+    
+        var popup_b201903108b666675569ab2a7a711455 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_1230dedc3dd4bef625e3f43d2034854d = $(`<div id="html_1230dedc3dd4bef625e3f43d2034854d" style="width: 100.0%; height: 100.0%;"><a href='https://www.studiodesursulines.com/'>STUDIO DES URSULINES</a><br>10 Rue des Ursulines 75005 PARIS</div>`)[0];
+                popup_b201903108b666675569ab2a7a711455.setContent(html_1230dedc3dd4bef625e3f43d2034854d);
+            
+        
+
+        marker_18fffe63f87b74dc6c30aeb48cddaad2.bindPopup(popup_b201903108b666675569ab2a7a711455)
+        ;
+
+        
+    
+    
+            var marker_266206b70f7d06816afcabdab41b2b9d = L.marker(
+                [48.8544954, 2.3401739],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_1bdac42c16f977cd618323969ad1e186 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_266206b70f7d06816afcabdab41b2b9d.setIcon(icon_1bdac42c16f977cd618323969ad1e186);
+        
+    
+        var popup_771d44c8ffec64d226274a009354a8c8 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_c2e90b74bcb30da5c1eed10afa31f942 = $(`<div id="html_c2e90b74bcb30da5c1eed10afa31f942" style="width: 100.0%; height: 100.0%;"><a href='https://pariscinemaclub.com/christine/'>CHRISTINE CINÉMA CLUB</a><br>4 rue Christine 75006 PARIS</div>`)[0];
+                popup_771d44c8ffec64d226274a009354a8c8.setContent(html_c2e90b74bcb30da5c1eed10afa31f942);
+            
+        
+
+        marker_266206b70f7d06816afcabdab41b2b9d.bindPopup(popup_771d44c8ffec64d226274a009354a8c8)
+        ;
+
+        
+    
+    
+            var marker_a0433117c763a2199501c3fd18312d0c = L.marker(
+                [48.8511931, 2.3304049],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_ce849c544cd57ce5e7d9dd018168b8fa = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_a0433117c763a2199501c3fd18312d0c.setIcon(icon_ce849c544cd57ce5e7d9dd018168b8fa);
+        
+    
+        var popup_acc9d8475b4967acc62aac51b5dc88f9 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_425b497f2651391da7964dbf8a735ec4 = $(`<div id="html_425b497f2651391da7964dbf8a735ec4" style="width: 100.0%; height: 100.0%;"><a href='https://dulaccinemas.com/cinema/larlequin/2625'>L'ARLEQUIN</a><br>76, rue de Rennes 75006 PARIS</div>`)[0];
+                popup_acc9d8475b4967acc62aac51b5dc88f9.setContent(html_425b497f2651391da7964dbf8a735ec4);
+            
+        
+
+        marker_a0433117c763a2199501c3fd18312d0c.bindPopup(popup_acc9d8475b4967acc62aac51b5dc88f9)
+        ;
+
+        
+    
+    
+            var marker_b0c0a21e70cf392fe0d708cad15ed11b = L.marker(
+                [48.8443113, 2.3304411],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_801eac9d3d2ecbc94cdde5599a40b575 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_b0c0a21e70cf392fe0d708cad15ed11b.setIcon(icon_801eac9d3d2ecbc94cdde5599a40b575);
+        
+    
+        var popup_b265adcff64c3d734dcafb5bcc317a1b = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_303b142a7e73aa2bbe4a2f13d05b6834 = $(`<div id="html_303b142a7e73aa2bbe4a2f13d05b6834" style="width: 100.0%; height: 100.0%;"><a href='https://www.lucernaire.fr/content/7-cinema'>LE LUCERNAIRE</a><br>53 rue Notre Dame des Champs 75006 PARIS</div>`)[0];
+                popup_b265adcff64c3d734dcafb5bcc317a1b.setContent(html_303b142a7e73aa2bbe4a2f13d05b6834);
+            
+        
+
+        marker_b0c0a21e70cf392fe0d708cad15ed11b.bindPopup(popup_b265adcff64c3d734dcafb5bcc317a1b)
+        ;
+
+        
+    
+    
+            var marker_943dcd4278cde51ff61ebd76d6375267 = L.marker(
+                [48.8533737, 2.3421249],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_f54bd1cd8708adbfd03a0748b927b9a7 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_943dcd4278cde51ff61ebd76d6375267.setIcon(icon_f54bd1cd8708adbfd03a0748b927b9a7);
+        
+    
+        var popup_298833d441b12ba96f70521129d2716f = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_c3dcb040f7b428665d7be3368a5b5a1a = $(`<div id="html_c3dcb040f7b428665d7be3368a5b5a1a" style="width: 100.0%; height: 100.0%;"><a href='https://cinemasaintandre.com/'>LE SAINT-ANDRÉ DES ARTS</a><br>30 rue Saint André des arts 75006 PARIS</div>`)[0];
+                popup_298833d441b12ba96f70521129d2716f.setContent(html_c3dcb040f7b428665d7be3368a5b5a1a);
+            
+        
+
+        marker_943dcd4278cde51ff61ebd76d6375267.bindPopup(popup_298833d441b12ba96f70521129d2716f)
+        ;
+
+        
+    
+    
+            var marker_4011e0d9ba3af79942ff8bd6a84c01fe = L.marker(
+                [48.848402, 2.3408453],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_e54a55b3b147571df5b8a7bff33d2933 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_4011e0d9ba3af79942ff8bd6a84c01fe.setIcon(icon_e54a55b3b147571df5b8a7bff33d2933);
+        
+    
+        var popup_fbf4524a5770dc5b00175f7b05c4614e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_24bef0af126533a39682d7020d9c5b09 = $(`<div id="html_24bef0af126533a39682d7020d9c5b09" style="width: 100.0%; height: 100.0%;"><a href='https://www.lestroisluxembourg.com/'>LES 3 LUXEMBOURG</a><br>67, rue Monsieur-le-Prince 75006 PARIS</div>`)[0];
+                popup_fbf4524a5770dc5b00175f7b05c4614e.setContent(html_24bef0af126533a39682d7020d9c5b09);
+            
+        
+
+        marker_4011e0d9ba3af79942ff8bd6a84c01fe.bindPopup(popup_fbf4524a5770dc5b00175f7b05c4614e)
+        ;
+
+        
+    
+    
+            var marker_c2340705cec76771cc67c8eb1823ce27 = L.marker(
+                [48.8728804, 2.2997201],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_b967ed62d6f81848ed7708265d8ed9f2 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_c2340705cec76771cc67c8eb1823ce27.setIcon(icon_b967ed62d6f81848ed7708265d8ed9f2);
+        
+    
+        var popup_887ffcb7a78f333d677e4914e51cda81 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_cf225588d65b42d07f11fbe848ab1b8c = $(`<div id="html_cf225588d65b42d07f11fbe848ab1b8c" style="width: 100.0%; height: 100.0%;"><a href='https://www.cinemabalzac.com/'>LE BALZAC</a><br>1, rue Balzac 75008 PARIS</div>`)[0];
+                popup_887ffcb7a78f333d677e4914e51cda81.setContent(html_cf225588d65b42d07f11fbe848ab1b8c);
+            
+        
+
+        marker_c2340705cec76771cc67c8eb1823ce27.bindPopup(popup_887ffcb7a78f333d677e4914e51cda81)
+        ;
+
+        
+    
+    
+            var marker_52fe79fdb97d0d12c147c223574a3fdd = L.marker(
+                [48.8705479, 2.3032157],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_b9a66f50ae9dca7830b8cfb8fd7ce1a1 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_52fe79fdb97d0d12c147c223574a3fdd.setIcon(icon_b9a66f50ae9dca7830b8cfb8fd7ce1a1);
+        
+    
+        var popup_800679ffd5e4fa68e627104a229643af = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_368366bb72e18d7b5ec9489ca7dd836e = $(`<div id="html_368366bb72e18d7b5ec9489ca7dd836e" style="width: 100.0%; height: 100.0%;"><a href='http://www.lelincoln.com/'>LE LINCOLN</a><br>14, rue Lincoln 75008 PARIS</div>`)[0];
+                popup_800679ffd5e4fa68e627104a229643af.setContent(html_368366bb72e18d7b5ec9489ca7dd836e);
+            
+        
+
+        marker_52fe79fdb97d0d12c147c223574a3fdd.bindPopup(popup_800679ffd5e4fa68e627104a229643af)
+        ;
+
+        
+    
+    
+            var marker_f9b51745a78f51bdfd8a8d9f6f6d870b = L.marker(
+                [48.8726035, 2.2973109],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_52136a2b6cd97fa117b810edf2c96f66 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_f9b51745a78f51bdfd8a8d9f6f6d870b.setIcon(icon_52136a2b6cd97fa117b810edf2c96f66);
+        
+    
+        var popup_04aa3f3c359d7535fee7356bfe629669 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_110f63de4c5d4ebdff8322872ddd9e7d = $(`<div id="html_110f63de4c5d4ebdff8322872ddd9e7d" style="width: 100.0%; height: 100.0%;"><a href='https://www.publiciscinemas.com/'>PUBLICIS</a><br>133, avenue des Champs-Elysées 75008 PARIS</div>`)[0];
+                popup_04aa3f3c359d7535fee7356bfe629669.setContent(html_110f63de4c5d4ebdff8322872ddd9e7d);
+            
+        
+
+        marker_f9b51745a78f51bdfd8a8d9f6f6d870b.bindPopup(popup_04aa3f3c359d7535fee7356bfe629669)
+        ;
+
+        
+    
+    
+            var marker_deff72de6f90ec5f540617db54ca5ddb = L.marker(
+                [48.8755636, 2.3279594],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_f6d97c420b3067d2a32af7cd5b1ade5f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_deff72de6f90ec5f540617db54ca5ddb.setIcon(icon_f6d97c420b3067d2a32af7cd5b1ade5f);
+        
+    
+        var popup_2acc222fe3a5f48b0a98720aea26aeaf = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_877709f3517b307e1cc6c8749bd53dbb = $(`<div id="html_877709f3517b307e1cc6c8749bd53dbb" style="width: 100.0%; height: 100.0%;"><a href='https://www.cinqcaumartin.com'>5 CAUMARTIN</a><br>101, rue Saint Lazare 75009 PARIS</div>`)[0];
+                popup_2acc222fe3a5f48b0a98720aea26aeaf.setContent(html_877709f3517b307e1cc6c8749bd53dbb);
+            
+        
+
+        marker_deff72de6f90ec5f540617db54ca5ddb.bindPopup(popup_2acc222fe3a5f48b0a98720aea26aeaf)
+        ;
+
+        
+    
+    
+            var marker_28ffee92de07f59e369360ec7a0e8ef0 = L.marker(
+                [48.8713796, 2.3448127],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_5d343359e667c3757ad58b8490d01557 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_28ffee92de07f59e369360ec7a0e8ef0.setIcon(icon_5d343359e667c3757ad58b8490d01557);
+        
+    
+        var popup_b5afb2bf99516d8cfa4a01b5df3fb17b = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_88b25c4718131c888937d72ab8ec3f72 = $(`<div id="html_88b25c4718131c888937d72ab8ec3f72" style="width: 100.0%; height: 100.0%;"><a href='http://maxlinder.com/'>Max Linder Panorama</a><br>24, boulevard Poissonnière 75009 PARIS</div>`)[0];
+                popup_b5afb2bf99516d8cfa4a01b5df3fb17b.setContent(html_88b25c4718131c888937d72ab8ec3f72);
+            
+        
+
+        marker_28ffee92de07f59e369360ec7a0e8ef0.bindPopup(popup_b5afb2bf99516d8cfa4a01b5df3fb17b)
+        ;
+
+        
+    
+    
+            var marker_408d4facd35da51746754f03c6db9270 = L.marker(
+                [48.8704786, 2.3546023],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_64c71090ab0db3eda7bfd7ea2b028ef1 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_408d4facd35da51746754f03c6db9270.setIcon(icon_64c71090ab0db3eda7bfd7ea2b028ef1);
+        
+    
+        var popup_96296c7f523214a934128e269a314c1a = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_c5a57b7afde4eccae0537cb243ee6e37 = $(`<div id="html_c5a57b7afde4eccae0537cb243ee6e37" style="width: 100.0%; height: 100.0%;"><a href='https://www.larchipel.net/'>L'ARCHIPEL</a><br>17, boulevard de Strasbourg 75010 PARIS</div>`)[0];
+                popup_96296c7f523214a934128e269a314c1a.setContent(html_c5a57b7afde4eccae0537cb243ee6e37);
+            
+        
+
+        marker_408d4facd35da51746754f03c6db9270.bindPopup(popup_96296c7f523214a934128e269a314c1a)
+        ;
+
+        
+    
+    
+            var marker_c6cfdd30aa87c0e43021ef47b9af337f = L.marker(
+                [48.8717708, 2.3553091],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_fe11bc71b0bb2ca42491f3b1320aa38f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_c6cfdd30aa87c0e43021ef47b9af337f.setIcon(icon_fe11bc71b0bb2ca42491f3b1320aa38f);
+        
+    
+        var popup_3d4f37efc8ad7f1686409f5cb4cfa5bf = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d6a9ef856d8a39c198ca803f4c53f206 = $(`<div id="html_d6a9ef856d8a39c198ca803f4c53f206" style="width: 100.0%; height: 100.0%;"><a href='https://www.lebrady.fr'>LE BRADY</a><br>39, boulevard de Strasbourg 75010 PARIS</div>`)[0];
+                popup_3d4f37efc8ad7f1686409f5cb4cfa5bf.setContent(html_d6a9ef856d8a39c198ca803f4c53f206);
+            
+        
+
+        marker_c6cfdd30aa87c0e43021ef47b9af337f.bindPopup(popup_3d4f37efc8ad7f1686409f5cb4cfa5bf)
+        ;
+
+        
+    
+    
+            var marker_b051ffdee17f5b927e5d6ee224c61b5b = L.marker(
+                [48.8835021, 2.3500543],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_d87f9398a0d63b0022b93fa4d2c1b06a = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_b051ffdee17f5b927e5d6ee224c61b5b.setIcon(icon_d87f9398a0d63b0022b93fa4d2c1b06a);
+        
+    
+        var popup_98c8ab832ff50b3fc8ff655b751d42dd = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_1a750a4d55a755be5cc7da9db4b5cee4 = $(`<div id="html_1a750a4d55a755be5cc7da9db4b5cee4" style="width: 100.0%; height: 100.0%;"><a href='https://www.cinemalouxor.fr/'>LE LOUXOR</a><br>170, boulevard de Magenta 75010 PARIS</div>`)[0];
+                popup_98c8ab832ff50b3fc8ff655b751d42dd.setContent(html_1a750a4d55a755be5cc7da9db4b5cee4);
+            
+        
+
+        marker_b051ffdee17f5b927e5d6ee224c61b5b.bindPopup(popup_98c8ab832ff50b3fc8ff655b751d42dd)
+        ;
+
+        
+    
+    
+            var marker_822d5ef16eaa8fea40b68043a7874ecc = L.marker(
+                [48.8539688, 2.3699642],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_8b3ff149081ee484c558fdf07aa37557 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_822d5ef16eaa8fea40b68043a7874ecc.setIcon(icon_8b3ff149081ee484c558fdf07aa37557);
+        
+    
+        var popup_43cb744f61bb039c562afb76877dbb07 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_fbaaa8f51862d0c6872fe7563c44c3c7 = $(`<div id="html_fbaaa8f51862d0c6872fe7563c44c3c7" style="width: 100.0%; height: 100.0%;"><a href='https://dulaccinemas.com/cinema/majestic-bastille/2736'>LE MAJESTIC BASTILLE</a><br>4, boulevard Richard Lenoir 75011 PARIS</div>`)[0];
+                popup_43cb744f61bb039c562afb76877dbb07.setContent(html_fbaaa8f51862d0c6872fe7563c44c3c7);
+            
+        
+
+        marker_822d5ef16eaa8fea40b68043a7874ecc.bindPopup(popup_43cb744f61bb039c562afb76877dbb07)
+        ;
+
+        
+    
+    
+            var marker_051213c0ab387b19e91db928051fe9e5 = L.marker(
+                [48.8367718, 2.3496494],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_b08fcd6f131211025dd156fa4414940c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_051213c0ab387b19e91db928051fe9e5.setIcon(icon_b08fcd6f131211025dd156fa4414940c);
+        
+    
+        var popup_8bdd86c44e4fe46141702f9c92eff00d = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_5b2898ab97383a67eedcaa50bba1ea2a = $(`<div id="html_5b2898ab97383a67eedcaa50bba1ea2a" style="width: 100.0%; height: 100.0%;"><a href='https://dulaccinemas.com/cinema/escurial/2794'>L'ESCURIAL</a><br>11, boulevard du Port-Royal 75013 PARIS</div>`)[0];
+                popup_8bdd86c44e4fe46141702f9c92eff00d.setContent(html_5b2898ab97383a67eedcaa50bba1ea2a);
+            
+        
+
+        marker_051213c0ab387b19e91db928051fe9e5.bindPopup(popup_8bdd86c44e4fe46141702f9c92eff00d)
+        ;
+
+        
+    
+    
+            var marker_be2db414d3f87b15632743cac3d2b93a = L.marker(
+                [48.8339547, 2.3165786],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_bf4bcd9126003e6278324f99906a878c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_be2db414d3f87b15632743cac3d2b93a.setIcon(icon_bf4bcd9126003e6278324f99906a878c);
+        
+    
+        var popup_cdfe7e08bcbe30868de7d8a0d088ba5a = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_577970e70c9c998539fb5908422d4175 = $(`<div id="html_577970e70c9c998539fb5908422d4175" style="width: 100.0%; height: 100.0%;"><a href='https://www.cinemalentrepot.fr/'>L'entrepôt</a><br>7 Rue Francis de Pressensé 75014 PARIS</div>`)[0];
+                popup_cdfe7e08bcbe30868de7d8a0d088ba5a.setContent(html_577970e70c9c998539fb5908422d4175);
+            
+        
+
+        marker_be2db414d3f87b15632743cac3d2b93a.bindPopup(popup_cdfe7e08bcbe30868de7d8a0d088ba5a)
+        ;
+
+        
+    
+    
+            var marker_d6cc4107256f19fc02cdf0f715febed7 = L.marker(
+                [48.8424152, 2.3276286],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_75adb05882e987f42d0ad4edf2ecc333 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_d6cc4107256f19fc02cdf0f715febed7.setIcon(icon_75adb05882e987f42d0ad4edf2ecc333);
+        
+    
+        var popup_bd6bdb7e58f0176d53448fdf3b33d91b = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_77444d15df57507d8f7632d8e55eaaa0 = $(`<div id="html_77444d15df57507d8f7632d8e55eaaa0" style="width: 100.0%; height: 100.0%;"><a href='https://www.parnassiens.com/'>LES SEPT PARNASSIENS</a><br>98 Boulevard du Montparnasse 75014 PARIS</div>`)[0];
+                popup_bd6bdb7e58f0176d53448fdf3b33d91b.setContent(html_77444d15df57507d8f7632d8e55eaaa0);
+            
+        
+
+        marker_d6cc4107256f19fc02cdf0f715febed7.bindPopup(popup_bd6bdb7e58f0176d53448fdf3b33d91b)
+        ;
+
+        
+    
+    
+            var marker_1e508c480c5ba4ffb94eef7f3146b998 = L.marker(
+                [48.8338236, 2.3309356],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_85a26f91c031e1300227299755eb8e2d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_1e508c480c5ba4ffb94eef7f3146b998.setIcon(icon_85a26f91c031e1300227299755eb8e2d);
+        
+    
+        var popup_a6d83adabe31f4b794603a944b14f73e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_aca93066bfd00425476e3b248370bcc3 = $(`<div id="html_aca93066bfd00425476e3b248370bcc3" style="width: 100.0%; height: 100.0%;"><a href='https://www.lescinemaschaplin.fr/'>CHAPLIN DENFERT</a><br>24 Place Denfert Rochereau 75014 PARIS</div>`)[0];
+                popup_a6d83adabe31f4b794603a944b14f73e.setContent(html_aca93066bfd00425476e3b248370bcc3);
+            
+        
+
+        marker_1e508c480c5ba4ffb94eef7f3146b998.bindPopup(popup_a6d83adabe31f4b794603a944b14f73e)
+        ;
+
+        
+    
+    
+            var marker_9b77c8e30c2b3531b75b1d67098ad816 = L.marker(
+                [48.8430793, 2.2985273],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_16f91e8ceee2a40efb2bc3057d30b8e5 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_9b77c8e30c2b3531b75b1d67098ad816.setIcon(icon_16f91e8ceee2a40efb2bc3057d30b8e5);
+        
+    
+        var popup_6e11f4a49a73c2fa303de188eae20fba = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_7abf88462088b8191f651a45fb180f7d = $(`<div id="html_7abf88462088b8191f651a45fb180f7d" style="width: 100.0%; height: 100.0%;"><a href='https://saintlambert.lescinemaschaplin.fr/'>CHAPLIN SAINT LAMBERT</a><br>6 Rue Péclet 75015 PARIS</div>`)[0];
+                popup_6e11f4a49a73c2fa303de188eae20fba.setContent(html_7abf88462088b8191f651a45fb180f7d);
+            
+        
+
+        marker_9b77c8e30c2b3531b75b1d67098ad816.bindPopup(popup_6e11f4a49a73c2fa303de188eae20fba)
+        ;
+
+        
+    
+    
+            var marker_532778071232b6895ae3ffd606e5a07e = L.marker(
+                [48.8842985, 2.3268322],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_48e7f7eaff7027d5dc91a9dc0540ab0d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_532778071232b6895ae3ffd606e5a07e.setIcon(icon_48e7f7eaff7027d5dc91a9dc0540ab0d);
+        
+    
+        var popup_00a8c29dae3e8466ea258f003f8063b1 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_98cf5a9ac0f047410d1d71deb6aea379 = $(`<div id="html_98cf5a9ac0f047410d1d71deb6aea379" style="width: 100.0%; height: 100.0%;"><a href='https://cinema-des-cineastes.fr/'>CINEMA DES CINEASTES</a><br>7, avenue de Clichy 75017 PARIS</div>`)[0];
+                popup_00a8c29dae3e8466ea258f003f8063b1.setContent(html_98cf5a9ac0f047410d1d71deb6aea379);
+            
+        
+
+        marker_532778071232b6895ae3ffd606e5a07e.bindPopup(popup_00a8c29dae3e8466ea258f003f8063b1)
+        ;
+
+        
+    
+    
+            var marker_e46497f4628cb0e3b5390e4d5af7bac4 = L.marker(
+                [48.8755476, 2.2944347],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_09dfc88e4a24e7be3d1c4145784c869b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_e46497f4628cb0e3b5390e4d5af7bac4.setIcon(icon_09dfc88e4a24e7be3d1c4145784c869b);
+        
+    
+        var popup_832ad6729ac0cdba67569289be8dbd65 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_f3a63bb957df635f5d138a19c43b9fc9 = $(`<div id="html_f3a63bb957df635f5d138a19c43b9fc9" style="width: 100.0%; height: 100.0%;"><a href='https://www.cinemamacmahon1938.com/'>MAC MAHON</a><br>5, avenue Mac Mahon 75017 PARIS</div>`)[0];
+                popup_832ad6729ac0cdba67569289be8dbd65.setContent(html_f3a63bb957df635f5d138a19c43b9fc9);
+            
+        
+
+        marker_e46497f4628cb0e3b5390e4d5af7bac4.bindPopup(popup_832ad6729ac0cdba67569289be8dbd65)
+        ;
+
+        
+    
+    
+            var marker_e359808db8b30d62efcab3344abf91ce = L.marker(
+                [48.8910945, 2.2353195],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_a2d2b3bf560300abc4d2db20d8199742 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_e359808db8b30d62efcab3344abf91ce.setIcon(icon_a2d2b3bf560300abc4d2db20d8199742);
+        
+    
+        var popup_9dfc89624b7dabbec4aa0de186baea8c = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_830d3b4c409d2376269531cffd05fcc2 = $(`<div id="html_830d3b4c409d2376269531cffd05fcc2" style="width: 100.0%; height: 100.0%;"><a href='https://www.ugc.fr/cinema.html?id=20'>UGC Ciné Cité La Défense</a><br>Centre Commercial Les Quatre Temps 92092 PARIS-LA-DEFENSE</div>`)[0];
+                popup_9dfc89624b7dabbec4aa0de186baea8c.setContent(html_830d3b4c409d2376269531cffd05fcc2);
+            
+        
+
+        marker_e359808db8b30d62efcab3344abf91ce.bindPopup(popup_9dfc89624b7dabbec4aa0de186baea8c)
+        ;
+
+        
+    
+    
+            var marker_48b10b8f1e2fb06e38658b889f4115b6 = L.marker(
+                [48.8263635, 2.2744845],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_007daa5354c488f64ed58e656b196ad9 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_48b10b8f1e2fb06e38658b889f4115b6.setIcon(icon_007daa5354c488f64ed58e656b196ad9);
+        
+    
+        var popup_281482f2d6c1aa9837fe2b2bb08f8e13 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_847abec96e203996e05702a96a11ae1b = $(`<div id="html_847abec96e203996e05702a96a11ae1b" style="width: 100.0%; height: 100.0%;"><a href='https://www.ugc.fr/cinema.html?id=59'>UGC Issy-les-Moulineaux</a><br>8 Promenade Cœur de Ville 92130 Issy-les-Moulineaux</div>`)[0];
+                popup_281482f2d6c1aa9837fe2b2bb08f8e13.setContent(html_847abec96e203996e05702a96a11ae1b);
+            
+        
+
+        marker_48b10b8f1e2fb06e38658b889f4115b6.bindPopup(popup_281482f2d6c1aa9837fe2b2bb08f8e13)
+        ;
+
+        
+    
+    
+            var marker_0a5438e55ee6bba05fd15f916f0bcfdd = L.marker(
+                [48.8809723, 2.4811577],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_df12df1532f01c1e8f95c5ee01f3486a = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_0a5438e55ee6bba05fd15f916f0bcfdd.setIcon(icon_df12df1532f01c1e8f95c5ee01f3486a);
+        
+    
+        var popup_747f10aa17cf800500dad5bdca34caaa = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_f8a3dff9543f8b4ff72dc47f2fa7743c = $(`<div id="html_f8a3dff9543f8b4ff72dc47f2fa7743c" style="width: 100.0%; height: 100.0%;"><a href='https://www.ugc.fr/cinema.html?id=18'>UGC Ciné Cité Rosny</a><br>Centre Commercial Rosny 2 - 16, rue Conrad Adenauer 93110 ROSNY SOUS BOIS</div>`)[0];
+                popup_747f10aa17cf800500dad5bdca34caaa.setContent(html_f8a3dff9543f8b4ff72dc47f2fa7743c);
+            
+        
+
+        marker_0a5438e55ee6bba05fd15f916f0bcfdd.bindPopup(popup_747f10aa17cf800500dad5bdca34caaa)
+        ;
+
+        
+    
+    
+            var marker_2547b585c6a92ba05cf7f79799b9982f = L.marker(
+                [48.9592868, 2.4751443],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_252258c215124fa42f0cc7818d28a1fc = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_2547b585c6a92ba05cf7f79799b9982f.setIcon(icon_252258c215124fa42f0cc7818d28a1fc);
+        
+    
+        var popup_0ad59382e09af15c1a56d416ce6784f6 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_8c03d703388d86f82c8e88cff43ada1f = $(`<div id="html_8c03d703388d86f82c8e88cff43ada1f" style="width: 100.0%; height: 100.0%;"><a href='https://www.ugc.fr/cinema.html?id=38'>UGC Ciné Cité O Parinor</a><br>Centre Commercial O Parinor Le Haut de Galy 93600 AULNAY SOUS BOIS</div>`)[0];
+                popup_0ad59382e09af15c1a56d416ce6784f6.setContent(html_8c03d703388d86f82c8e88cff43ada1f);
+            
+        
+
+        marker_2547b585c6a92ba05cf7f79799b9982f.bindPopup(popup_0ad59382e09af15c1a56d416ce6784f6)
+        ;
+
+        
+    
+    
+            var marker_1d78ad5e9dca955a752960de5b9f6b80 = L.marker(
+                [48.7801898, 2.4587436],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_fb4ccb65823eecd4af17095bc296d56f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_1d78ad5e9dca955a752960de5b9f6b80.setIcon(icon_fb4ccb65823eecd4af17095bc296d56f);
+        
+    
+        var popup_35264af50373508cfe1bc0293cd3312e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_45c0a90ec26008c8b66b184042dcd629 = $(`<div id="html_45c0a90ec26008c8b66b184042dcd629" style="width: 100.0%; height: 100.0%;"><a href='https://www.ugc.fr/cinema.html?id=21'>UGC Ciné Cité Créteil</a><br>Centre Commercial Créteil Soleil 94000 CRETEIL</div>`)[0];
+                popup_35264af50373508cfe1bc0293cd3312e.setContent(html_45c0a90ec26008c8b66b184042dcd629);
+            
+        
+
+        marker_1d78ad5e9dca955a752960de5b9f6b80.bindPopup(popup_35264af50373508cfe1bc0293cd3312e)
+        ;
+
+        
+    
+    
+            var marker_e3e0745081dda48f8b05deb8f1800c37 = L.marker(
+                [48.8397096, 2.547728],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_d0f5954804aa0d1364f1d73fc701914c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_e3e0745081dda48f8b05deb8f1800c37.setIcon(icon_d0f5954804aa0d1364f1d73fc701914c);
+        
+    
+        var popup_a9a8ec34f4a2de817e3fdcbca6bfa654 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_1134e67b4f887b2b1bfd9701902d4ac0 = $(`<div id="html_1134e67b4f887b2b1bfd9701902d4ac0" style="width: 100.0%; height: 100.0%;"><a href='https://www.ugc.fr/cinema.html?id=19'>UGC Ciné Cité Noisy-le-Grand</a><br>Centre Commercial Arcades BP200 93193 NOISY-LE-GRAND</div>`)[0];
+                popup_a9a8ec34f4a2de817e3fdcbca6bfa654.setContent(html_1134e67b4f887b2b1bfd9701902d4ac0);
+            
+        
+
+        marker_e3e0745081dda48f8b05deb8f1800c37.bindPopup(popup_a9a8ec34f4a2de817e3fdcbca6bfa654)
+        ;
+
+        
+    
+    
+            var marker_da370bbf4b20ae8e96af912ed440aecb = L.marker(
+                [49.0479497, 2.0121995],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_fa0be8191cd6683b7a293de3c2df8e63 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_da370bbf4b20ae8e96af912ed440aecb.setIcon(icon_fa0be8191cd6683b7a293de3c2df8e63);
+        
+    
+        var popup_6ceeb79f453a000e6cc470b95316bf6f = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_ee17933425339c09c5798f7c67dc45a4 = $(`<div id="html_ee17933425339c09c5798f7c67dc45a4" style="width: 100.0%; height: 100.0%;"><a href='https://www.ugc.fr/cinema.html?id=16'>UGC Ciné Cité Cergy-le-Haut</a><br>8, place des 3 Gares 95800 CERGY-LE-HAUT</div>`)[0];
+                popup_6ceeb79f453a000e6cc470b95316bf6f.setContent(html_ee17933425339c09c5798f7c67dc45a4);
+            
+        
+
+        marker_da370bbf4b20ae8e96af912ed440aecb.bindPopup(popup_6ceeb79f453a000e6cc470b95316bf6f)
+        ;
+
+        
+    
+    
+            var marker_4141f070090d542d1fafbcdc03878a93 = L.marker(
+                [48.9708619, 2.3069986],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_5ea3d3917862bc534eec3808c36a9254 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_4141f070090d542d1fafbcdc03878a93.setIcon(icon_5ea3d3917862bc534eec3808c36a9254);
+        
+    
+        var popup_f191cc4932c03a97c6ff788e8b67d6e8 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_daf308efbb1e8a8b32bde6faa8eca3d2 = $(`<div id="html_daf308efbb1e8a8b32bde6faa8eca3d2" style="width: 100.0%; height: 100.0%;"><a href='https://www.ugc.fr/cinema.html?id=17'>UGC Enghien</a><br>38, rue du Général de Gaulle 95880 ENGHIEN-LES-BAINS</div>`)[0];
+                popup_f191cc4932c03a97c6ff788e8b67d6e8.setContent(html_daf308efbb1e8a8b32bde6faa8eca3d2);
+            
+        
+
+        marker_4141f070090d542d1fafbcdc03878a93.bindPopup(popup_f191cc4932c03a97c6ff788e8b67d6e8)
+        ;
+
+        
+    
+    
+            var marker_c1acf6dc87802134a2fafb9dadd1f42b = L.marker(
+                [48.7830252, 2.2203043],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_e5aca0a3d8bb5b972aa15a9e34894973 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_c1acf6dc87802134a2fafb9dadd1f42b.setIcon(icon_e5aca0a3d8bb5b972aa15a9e34894973);
+        
+    
+        var popup_bea181acd8960902d71cd2364d31247b = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_497e6e07c3d8638e72caca66802056df = $(`<div id="html_497e6e07c3d8638e72caca66802056df" style="width: 100.0%; height: 100.0%;"><a href='https://www.ugc.fr/cinema.html?id=43'>UGC Ciné Cité Vélizy</a><br>Centre Commercial Régional Vélizy 2 78140 VELIZY VILLACOUBLAY</div>`)[0];
+                popup_bea181acd8960902d71cd2364d31247b.setContent(html_497e6e07c3d8638e72caca66802056df);
+            
+        
+
+        marker_c1acf6dc87802134a2fafb9dadd1f42b.bindPopup(popup_bea181acd8960902d71cd2364d31247b)
+        ;
+
+        
+    
+    
+            var marker_db402e21fd668b9487c3330906fe4435 = L.marker(
+                [48.8297322, 2.1144509],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_6e067a055d651cefc741bd15126c256c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_db402e21fd668b9487c3330906fe4435.setIcon(icon_6e067a055d651cefc741bd15126c256c);
+        
+    
+        var popup_9eed3f13ec976103c9da5453bfb1d906 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_a940a48dcf46376bd5ee72115a6ea8f0 = $(`<div id="html_a940a48dcf46376bd5ee72115a6ea8f0" style="width: 100.0%; height: 100.0%;"><a href='https://www.ugc.fr/cinema.html?id=44'>UGC Ciné Cité Parly</a><br>2 Avenue Charles de Gaulle 78150 LE CHESNAY</div>`)[0];
+                popup_9eed3f13ec976103c9da5453bfb1d906.setContent(html_a940a48dcf46376bd5ee72115a6ea8f0);
+            
+        
+
+        marker_db402e21fd668b9487c3330906fe4435.bindPopup(popup_9eed3f13ec976103c9da5453bfb1d906)
+        ;
+
+        
+    
+    
+            var marker_d7ce0131e3128ec960cbbb060dd6f25a = L.marker(
+                [48.7840673, 2.0411051],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_8261743d93900c576e45d9d035eabb41 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_d7ce0131e3128ec960cbbb060dd6f25a.setIcon(icon_8261743d93900c576e45d9d035eabb41);
+        
+    
+        var popup_8d53bda3d7e26b070da1b85cb3e8b5e8 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_10efe9501b1e248a44d5161cb852ff7f = $(`<div id="html_10efe9501b1e248a44d5161cb852ff7f" style="width: 100.0%; height: 100.0%;"><a href='https://www.ugc.fr/cinema.html?id=6'>UGC Ciné Cité SQY Ouest</a><br>1, avenue de la Source de la Bièvre 78180 MONTIGNY-LE-BRETONNEUX</div>`)[0];
+                popup_8d53bda3d7e26b070da1b85cb3e8b5e8.setContent(html_10efe9501b1e248a44d5161cb852ff7f);
+            
+        
+
+        marker_d7ce0131e3128ec960cbbb060dd6f25a.bindPopup(popup_8d53bda3d7e26b070da1b85cb3e8b5e8)
+        ;
+
+        
+    
+    
+            var marker_3e94c5c2e499ae1a557465e23908c3fd = L.marker(
+                [48.8036593, 2.1337243],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_c7c889eea504a95193ba523c0f0e0640 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_3e94c5c2e499ae1a557465e23908c3fd.setIcon(icon_c7c889eea504a95193ba523c0f0e0640);
+        
+    
+        var popup_ebed6646282ba69609ba6da35330d226 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_566ce8c35d6fbcd55efc634283b4319d = $(`<div id="html_566ce8c35d6fbcd55efc634283b4319d" style="width: 100.0%; height: 100.0%;"><a href='https://www.ugc.fr/cinema.html?id=40'>UGC Roxane</a><br>6 Rue Saint-Simon 78000 VERSAILLES</div>`)[0];
+                popup_ebed6646282ba69609ba6da35330d226.setContent(html_566ce8c35d6fbcd55efc634283b4319d);
+            
+        
+
+        marker_3e94c5c2e499ae1a557465e23908c3fd.bindPopup(popup_ebed6646282ba69609ba6da35330d226)
+        ;
+
+        
+    
+    
+            var marker_f2b7005ec137a80bba6e3e1913e92dc9 = L.marker(
+                [48.8082624, 2.1310843],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_ea2eb64a3438c1d9421190ef0a78ab1f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_f2b7005ec137a80bba6e3e1913e92dc9.setIcon(icon_ea2eb64a3438c1d9421190ef0a78ab1f);
+        
+    
+        var popup_6fcc354bb16cd62ba3500de87b205538 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_2eef3281e4bc2571ec3b90ce92c53bc9 = $(`<div id="html_2eef3281e4bc2571ec3b90ce92c53bc9" style="width: 100.0%; height: 100.0%;"><a href='https://www.ugc.fr/cinema.html?id=41'>UGC Cyrano</a><br>7 Rue Rameau 78000 VERSAILLES</div>`)[0];
+                popup_6fcc354bb16cd62ba3500de87b205538.setContent(html_2eef3281e4bc2571ec3b90ce92c53bc9);
+            
+        
+
+        marker_f2b7005ec137a80bba6e3e1913e92dc9.bindPopup(popup_6fcc354bb16cd62ba3500de87b205538)
+        ;
+
+        
+    
+    
+            var marker_d2476ff4bee276b596988615a89a7b3e = L.marker(
+                [48.8268158, 1.9583688],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_df7facf5ef46e19ffd9f9a360987aa17 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_d2476ff4bee276b596988615a89a7b3e.setIcon(icon_df7facf5ef46e19ffd9f9a360987aa17);
+        
+    
+        var popup_58be418ba5f5816370fd434dfa560a2e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_c2ebc6a842b33ef5137c0e5790e9592f = $(`<div id="html_c2ebc6a842b33ef5137c0e5790e9592f" style="width: 100.0%; height: 100.0%;"><a href='https://www.ugc.fr/cinema.html?id=55'>UGC Plaisir</a><br>Centre Commercial Mon Grand Plaisir - 1170 Avenue de Saint-Germain 78370 PLAISIR</div>`)[0];
+                popup_58be418ba5f5816370fd434dfa560a2e.setContent(html_c2ebc6a842b33ef5137c0e5790e9592f);
+            
+        
+
+        marker_d2476ff4bee276b596988615a89a7b3e.bindPopup(popup_58be418ba5f5816370fd434dfa560a2e)
+        ;
+
+        
+    
+    
+            var marker_d2df9dd5e7ed934e7f41b2ed1f3e06a9 = L.marker(
+                [48.701967, 2.13348],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_624cb6744b69ac07330baa98baf0dba1 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_d2df9dd5e7ed934e7f41b2ed1f3e06a9.setIcon(icon_624cb6744b69ac07330baa98baf0dba1);
+        
+    
+        var popup_39f7c3bfd48a97d3607a04c9dc7951a9 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_7a96c7eeac6f9b77866bab6942c9517f = $(`<div id="html_7a96c7eeac6f9b77866bab6942c9517f" style="width: 100.0%; height: 100.0%;"><a href='https://www.ugc.fr/cinema.html?id=47'>Le Central</a><br>Square de la Mairie 91190 GIF SUR YVETTE</div>`)[0];
+                popup_39f7c3bfd48a97d3607a04c9dc7951a9.setContent(html_7a96c7eeac6f9b77866bab6942c9517f);
+            
+        
+
+        marker_d2df9dd5e7ed934e7f41b2ed1f3e06a9.bindPopup(popup_39f7c3bfd48a97d3607a04c9dc7951a9)
+        ;
+
+        
+    
+    
+            var marker_35a2eb526e63439f2bb7a77df8a6988c = L.marker(
+                [48.8965851, 2.090942],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_d292abf349bd94c47be2337c4d97175b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_35a2eb526e63439f2bb7a77df8a6988c.setIcon(icon_d292abf349bd94c47be2337c4d97175b);
+        
+    
+        var popup_2d3867c1d384a1d1524fb8106a8f6088 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d3fc671246b16d2a0b040f6833f49c2c = $(`<div id="html_d3fc671246b16d2a0b040f6833f49c2c" style="width: 100.0%; height: 100.0%;"><a href='https://www.ugc.fr/cinema.html?id=48'>C2L Saint Germain</a><br>25-27-29 rue du Vieux Marché 78100 SAINT GERMAIN EN LAYE</div>`)[0];
+                popup_2d3867c1d384a1d1524fb8106a8f6088.setContent(html_d3fc671246b16d2a0b040f6833f49c2c);
+            
+        
+
+        marker_35a2eb526e63439f2bb7a77df8a6988c.bindPopup(popup_2d3867c1d384a1d1524fb8106a8f6088)
+        ;
+
+        
+    
+    
+            var marker_344f7d6fc8ad8b32edc043685fbe73a8 = L.marker(
+                [48.9379601, 2.159291],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_b1bccf7e7269a4da3af4b6b7399c5b89 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_344f7d6fc8ad8b32edc043685fbe73a8.setIcon(icon_b1bccf7e7269a4da3af4b6b7399c5b89);
+        
+    
+        var popup_78cf863847f05ed3536390b68ddb737c = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_e4ddfdeeedf18abf0e9a45525a3f792a = $(`<div id="html_e4ddfdeeedf18abf0e9a45525a3f792a" style="width: 100.0%; height: 100.0%;"><a href='https://www.ugc.fr/cinema.html?id=49'>Le Cin'Hoche</a><br>6 rue Hoche 78500 SARTROUVILLE</div>`)[0];
+                popup_78cf863847f05ed3536390b68ddb737c.setContent(html_e4ddfdeeedf18abf0e9a45525a3f792a);
+            
+        
+
+        marker_344f7d6fc8ad8b32edc043685fbe73a8.bindPopup(popup_78cf863847f05ed3536390b68ddb737c)
+        ;
+
+        
+    
+    
+            var marker_6356e93c2ee8a620f296e98bc3ea02f9 = L.marker(
+                [48.9283832, 2.0442028],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_588225fb1b76956411d60dfe648232a6 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_6356e93c2ee8a620f296e98bc3ea02f9.setIcon(icon_588225fb1b76956411d60dfe648232a6);
+        
+    
+        var popup_b2136047f9bdeff14eef58766ff3b47a = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_0b7739221ca7362f8b1eb1157ee999d5 = $(`<div id="html_0b7739221ca7362f8b1eb1157ee999d5" style="width: 100.0%; height: 100.0%;"><a href='https://www.ugc.fr/cinema.html?id=54'>C2L Poissy</a><br>112 Rue du Général de Gaulle 78300 POISSY</div>`)[0];
+                popup_b2136047f9bdeff14eef58766ff3b47a.setContent(html_0b7739221ca7362f8b1eb1157ee999d5);
+            
+        
+
+        marker_6356e93c2ee8a620f296e98bc3ea02f9.bindPopup(popup_b2136047f9bdeff14eef58766ff3b47a)
+        ;
+
+        
+    
+    
+            var marker_f1379d56bcc4d9bbb770afa41429abb3 = L.marker(
+                [48.9595301, 2.8827296],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_bf35f7a36eb0c2bbac69ad3c913a1d04 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_f1379d56bcc4d9bbb770afa41429abb3.setIcon(icon_bf35f7a36eb0c2bbac69ad3c913a1d04);
+        
+    
+        var popup_2f38f9397eadc1b3b2d3f0b5fd29cbad = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_07d6f21685e226c680af8f0034ca5e43 = $(`<div id="html_07d6f21685e226c680af8f0034ca5e43" style="width: 100.0%; height: 100.0%;"><a href='https://www.ugc.fr/cinema-ugc-le-majestic.html'>UGC Le Majestic</a><br>11 Place Henri IV 77100 MEAUX</div>`)[0];
+                popup_2f38f9397eadc1b3b2d3f0b5fd29cbad.setContent(html_07d6f21685e226c680af8f0034ca5e43);
+            
+        
+
+        marker_f1379d56bcc4d9bbb770afa41429abb3.bindPopup(popup_2f38f9397eadc1b3b2d3f0b5fd29cbad)
+        ;
+
+        
+    
+    
+            var marker_10f65292232c085b5d307d7f4087f4af = L.marker(
+                [48.9107503, 2.3839544],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_78ba6071ea2eb849c7b548ceb4c98b77 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_10f65292232c085b5d307d7f4087f4af.setIcon(icon_78ba6071ea2eb849c7b548ceb4c98b77);
+        
+    
+        var popup_debc50f034ed8df4258391d8a65a6d22 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_c8939787a241a8dcf7cdab3546ce473b = $(`<div id="html_c8939787a241a8dcf7cdab3546ce473b" style="width: 100.0%; height: 100.0%;"><a href='https://lestudio-aubervilliers.fr/'>CINEMA LE STUDIO</a><br>2 rue Edouard Poisson 93300 AUBERVILLIERS</div>`)[0];
+                popup_debc50f034ed8df4258391d8a65a6d22.setContent(html_c8939787a241a8dcf7cdab3546ce473b);
+            
+        
+
+        marker_10f65292232c085b5d307d7f4087f4af.bindPopup(popup_debc50f034ed8df4258391d8a65a6d22)
+        ;
+
+        
+    
+    
+            var marker_bd6ab51b340804aad208fb738b0188c7 = L.marker(
+                [48.8524988, 2.2166366],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_a89775ddcbd38d9b3eac5f7962239bdb = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_bd6ab51b340804aad208fb738b0188c7.setIcon(icon_a89775ddcbd38d9b3eac5f7962239bdb);
+        
+    
+        var popup_bc8701a793ea411af7a3e4834225a8b0 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_58443d76ece6cc58f02e4974b7a31912 = $(`<div id="html_58443d76ece6cc58f02e4974b7a31912" style="width: 100.0%; height: 100.0%;"><a href='https://www.3pierrots.fr/'>LES 3 PIERROTS</a><br>6 Rue du Mont Valérien 92210 SAINT-CLOUD</div>`)[0];
+                popup_bc8701a793ea411af7a3e4834225a8b0.setContent(html_58443d76ece6cc58f02e4974b7a31912);
+            
+        
+
+        marker_bd6ab51b340804aad208fb738b0188c7.bindPopup(popup_bc8701a793ea411af7a3e4834225a8b0)
+        ;
+
+        
+    
+    
+            var marker_e584528a8669b7af332302b94c65484b = L.marker(
+                [49.0022062, 2.4232687],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_876fce47a10dd58885b01724942fb1b3 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_e584528a8669b7af332302b94c65484b.setIcon(icon_876fce47a10dd58885b01724942fb1b3);
+        
+    
+        var popup_0f684e45c71562b3d4ae750db1714ad0 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_6d80bc974e1b7140f89b5c6a5c4f45aa = $(`<div id="html_6d80bc974e1b7140f89b5c6a5c4f45aa" style="width: 100.0%; height: 100.0%;"><a href='http://cineprevert.blogspot.fr/'>CINEMA JACQUES PREVERT</a><br>134 rue Anatole France 93600 AULNAY SOUS BOIS</div>`)[0];
+                popup_0f684e45c71562b3d4ae750db1714ad0.setContent(html_6d80bc974e1b7140f89b5c6a5c4f45aa);
+            
+        
+
+        marker_e584528a8669b7af332302b94c65484b.bindPopup(popup_0f684e45c71562b3d4ae750db1714ad0)
+        ;
+
+        
+    
+    
+            var marker_78b4165cd9d55784a52fc5d40d5e439d = L.marker(
+                [48.796726, 2.33456],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_31e0d37247d8000402329efd4e758632 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_78b4165cd9d55784a52fc5d40d5e439d.setIcon(icon_31e0d37247d8000402329efd4e758632);
+        
+    
+        var popup_e8478f563f3056818b540ae7a1d78d0f = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_eeaba106bffccaa89e5e794936d0340e = $(`<div id="html_eeaba106bffccaa89e5e794936d0340e" style="width: 100.0%; height: 100.0%;"><a href='https://www.cinema-lapleiade.fr/'>LA PLEIADE</a><br>12, avenue Cousin de Méricourt 94230 CACHAN</div>`)[0];
+                popup_e8478f563f3056818b540ae7a1d78d0f.setContent(html_eeaba106bffccaa89e5e794936d0340e);
+            
+        
+
+        marker_78b4165cd9d55784a52fc5d40d5e439d.bindPopup(popup_e8478f563f3056818b540ae7a1d78d0f)
+        ;
+
+        
+    
+    
+            var marker_351448e8de04ed418f71b5f48d228000 = L.marker(
+                [48.8868384, 2.1562778],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_ca14e31436f1213ff93e703a9e7311be = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_351448e8de04ed418f71b5f48d228000.setIcon(icon_ca14e31436f1213ff93e703a9e7311be);
+        
+    
+        var popup_30f8e6e6ac4418b8c855b1b470dcae8a = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_cdd0b3a5274a8382072e4b7331049b36 = $(`<div id="html_cdd0b3a5274a8382072e4b7331049b36" style="width: 100.0%; height: 100.0%;"><a href='https://www.cinechatou.fr/'>CINÉMA LOUIS JOUVET</a><br>3 place Maurice Berteaux 78400 CHATOU</div>`)[0];
+                popup_30f8e6e6ac4418b8c855b1b470dcae8a.setContent(html_cdd0b3a5274a8382072e4b7331049b36);
+            
+        
+
+        marker_351448e8de04ed418f71b5f48d228000.bindPopup(popup_30f8e6e6ac4418b8c855b1b470dcae8a)
+        ;
+
+        
+    
+    
+            var marker_777969c22c10983c91913e08c2501e77 = L.marker(
+                [48.901857, 2.309369],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_883b4ef7b95ac49e7310299a2f241f51 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_777969c22c10983c91913e08c2501e77.setIcon(icon_883b4ef7b95ac49e7310299a2f241f51);
+        
+    
+        var popup_63cfbde028566c542fbeca3512f6feba = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_e15a708f79dbdc920049c4e5dd341759 = $(`<div id="html_e15a708f79dbdc920049c4e5dd341759" style="width: 100.0%; height: 100.0%;"><a href='https://www.ville-clichy.fr/119-theatre-rutebeuf-clichy.htm'>CINÉMA RUTEBEUF</a><br>16/18 Allée Léon Gambetta 92110 CLICHY</div>`)[0];
+                popup_63cfbde028566c542fbeca3512f6feba.setContent(html_e15a708f79dbdc920049c4e5dd341759);
+            
+        
+
+        marker_777969c22c10983c91913e08c2501e77.bindPopup(popup_63cfbde028566c542fbeca3512f6feba)
+        ;
+
+        
+    
+    
+            var marker_82c568fbfb3747bdcf29a7e25489f81a = L.marker(
+                [48.9382227, 2.4624069],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_bd480e991f44fa3f7dfa9dd99292694d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_82c568fbfb3747bdcf29a7e25489f81a.setIcon(icon_bd480e991f44fa3f7dfa9dd99292694d);
+        
+    
+        var popup_f71d287a146875d1e5a81bff417c5db1 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_eab36c4b376b678bce1222121f08bf95 = $(`<div id="html_eab36c4b376b678bce1222121f08bf95" style="width: 100.0%; height: 100.0%;"><a href='https://www.cinemadublancmesnil.fr/'>LOUIS DAQUIN</a><br>Place Gabriel Péri - 16 mail Debré Berhan 93150 LE BLANC-MESNIL</div>`)[0];
+                popup_f71d287a146875d1e5a81bff417c5db1.setContent(html_eab36c4b376b678bce1222121f08bf95);
+            
+        
+
+        marker_82c568fbfb3747bdcf29a7e25489f81a.bindPopup(popup_f71d287a146875d1e5a81bff417c5db1)
+        ;
+
+        
+    
+    
+            var marker_5137b94485924ddebc494cb36d09b415 = L.marker(
+                [48.8467691, 2.5102565],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_60544c5907139f3fd16d77b482a75f14 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_5137b94485924ddebc494cb36d09b415.setIcon(icon_60544c5907139f3fd16d77b482a75f14);
+        
+    
+        var popup_2f3147226f9cb212fc5b680f50b96558 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_6b7caed37a2fa1326152d7e893cf4602 = $(`<div id="html_6b7caed37a2fa1326152d7e893cf4602" style="width: 100.0%; height: 100.0%;"><a href='https://www.cdbm.org/informations-pratiques/ou-trouver-le-tract-cinema/'>CENTRE DES BORDS DE MARNE</a><br>2 Rue de la Prairie 94170 LE PERREUX-SUR-MARNE</div>`)[0];
+                popup_2f3147226f9cb212fc5b680f50b96558.setContent(html_6b7caed37a2fa1326152d7e893cf4602);
+            
+        
+
+        marker_5137b94485924ddebc494cb36d09b415.bindPopup(popup_2f3147226f9cb212fc5b680f50b96558)
+        ;
+
+        
+    
+    
+            var marker_bab293b76557fae570373052e947d8a4 = L.marker(
+                [48.8939122, 2.1343389],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_15ace022526d23c4e69e8765a086d8f3 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_bab293b76557fae570373052e947d8a4.setIcon(icon_15ace022526d23c4e69e8765a086d8f3);
+        
+    
+        var popup_661381f0512cd8ec8499010c0d5c549f = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_a33b0edc33e9d94b937d771a1c299649 = $(`<div id="html_a33b0edc33e9d94b937d771a1c299649" style="width: 100.0%; height: 100.0%;"><a href='https://vesinet.org/le-cinema/'>JEAN MARAIS</a><br>59 boulevard Carnot 78110 LE VÉSINET</div>`)[0];
+                popup_661381f0512cd8ec8499010c0d5c549f.setContent(html_a33b0edc33e9d94b937d771a1c299649);
+            
+        
+
+        marker_bab293b76557fae570373052e947d8a4.bindPopup(popup_661381f0512cd8ec8499010c0d5c549f)
+        ;
+
+        
+    
+    
+            var marker_be75355b1c56227286c6b93a35eb6142 = L.marker(
+                [48.9463965, 2.1471878],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_e07863312c2d37331579304319e07009 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_be75355b1c56227286c6b93a35eb6142.setIcon(icon_e07863312c2d37331579304319e07009);
+        
+    
+        var popup_38daef11b58045f93f4c8535ee61d34f = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_a871d89f3ce439f763844fd3d5062a14 = $(`<div id="html_a871d89f3ce439f763844fd3d5062a14" style="width: 100.0%; height: 100.0%;"><a href='https://atalante-cinema.org/'>L'ATALANTE</a><br>48 rue du Prieuré 78600 MAISONS-LAFFITTE</div>`)[0];
+                popup_38daef11b58045f93f4c8535ee61d34f.setContent(html_a871d89f3ce439f763844fd3d5062a14);
+            
+        
+
+        marker_be75355b1c56227286c6b93a35eb6142.bindPopup(popup_38daef11b58045f93f4c8535ee61d34f)
+        ;
+
+        
+    
+    
+            var marker_2b8a94cbde8aae6dbd28dd8e3ec7bc9c = L.marker(
+                [48.7321907, 2.289034],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_5b55e48e7dc04afe8c121be5db8c1c15 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_2b8a94cbde8aae6dbd28dd8e3ec7bc9c.setIcon(icon_5b55e48e7dc04afe8c121be5db8c1c15);
+        
+    
+        var popup_1db6e58a3a4b1429bf1cb703cda93604 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_ce5c447ef8cfb6b5a6f4b726fc227d23 = $(`<div id="html_ce5c447ef8cfb6b5a6f4b726fc227d23" style="width: 100.0%; height: 100.0%;"><a href='https://cinemassy.com/'>CINEMASSY</a><br>Place de France 91300 MASSY</div>`)[0];
+                popup_1db6e58a3a4b1429bf1cb703cda93604.setContent(html_ce5c447ef8cfb6b5a6f4b726fc227d23);
+            
+        
+
+        marker_2b8a94cbde8aae6dbd28dd8e3ec7bc9c.bindPopup(popup_1db6e58a3a4b1429bf1cb703cda93604)
+        ;
+
+        
+    
+    
+            var marker_a6dc9f0e39cc1d8712e7b22d85f96835 = L.marker(
+                [48.988786, 2.31804],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_8881668523544b418d28d16f787a79b9 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_a6dc9f0e39cc1d8712e7b22d85f96835.setIcon(icon_8881668523544b418d28d16f787a79b9);
+        
+    
+        var popup_0939333396573cdbd08a2cb0efdad468 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_5011642a18754f094e31fe5cfd58fe76 = $(`<div id="html_5011642a18754f094e31fe5cfd58fe76" style="width: 100.0%; height: 100.0%;"><a href='https://montmocine.fr/'>CINÉMA L'EDEN</a><br>5 rue de Pontoise 95160 MONTMORENCY</div>`)[0];
+                popup_0939333396573cdbd08a2cb0efdad468.setContent(html_5011642a18754f094e31fe5cfd58fe76);
+            
+        
+
+        marker_a6dc9f0e39cc1d8712e7b22d85f96835.bindPopup(popup_0939333396573cdbd08a2cb0efdad468)
+        ;
+
+        
+    
+    
+            var marker_fe0ef1099913b163f5a4f544f12c6a56 = L.marker(
+                [48.8385685, 2.4892995],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_a8ae76cdb1d5f3502609f8d907c23f07 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_fe0ef1099913b163f5a4f544f12c6a56.setIcon(icon_a8ae76cdb1d5f3502609f8d907c23f07);
+        
+    
+        var popup_a9d71adcc78cda9083158dddc848c963 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d0a045365fa73a6aad547e3f5988a812 = $(`<div id="html_d0a045365fa73a6aad547e3f5988a812" style="width: 100.0%; height: 100.0%;"><a href='https://royalpalacenogent.fr/'>LE ROYAL PALACE</a><br>165, Grande Rue Charles de Gaulle 94130 NOGENT SUR MARNE</div>`)[0];
+                popup_a9d71adcc78cda9083158dddc848c963.setContent(html_d0a045365fa73a6aad547e3f5988a812);
+            
+        
+
+        marker_fe0ef1099913b163f5a4f544f12c6a56.bindPopup(popup_a9d71adcc78cda9083158dddc848c963)
+        ;
+
+        
+    
+    
+            var marker_b11b6ec9218931c0f22986727437fe64 = L.marker(
+                [48.8486594, 2.5531904],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_1e305632eb6a154e3a41cbe816d1a832 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_b11b6ec9218931c0f22986727437fe64.setIcon(icon_1e305632eb6a154e3a41cbe816d1a832);
+        
+    
+        var popup_b9fdbd511cd4d55d264590b1391b29df = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_4ce180a6927761e685667b48ee544d7d = $(`<div id="html_4ce180a6927761e685667b48ee544d7d" style="width: 100.0%; height: 100.0%;"><a href='https://www.cinema-lebijou.fr/'>LE BIJOU</a><br>4, place de la Libération 93160 NOISY LE GRAND</div>`)[0];
+                popup_b9fdbd511cd4d55d264590b1391b29df.setContent(html_4ce180a6927761e685667b48ee544d7d);
+            
+        
+
+        marker_b11b6ec9218931c0f22986727437fe64.bindPopup(popup_b9fdbd511cd4d55d264590b1391b29df)
+        ;
+
+        
+    
+    
+            var marker_053e865d7a23ccee02919d2625b88e59 = L.marker(
+                [48.8621243, 2.1955006],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_aaca109324556177daf6890a11e365d3 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_053e865d7a23ccee02919d2625b88e59.setIcon(icon_aaca109324556177daf6890a11e365d3);
+        
+    
+        var popup_90c929df3cc73c7b3d8170dd3869d0d1 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_cf14e43ad3fa224a4f8aa6c731a6651c = $(`<div id="html_cf14e43ad3fa224a4f8aa6c731a6651c" style="width: 100.0%; height: 100.0%;"><a href='https://www.cinerueil.fr/ariel-hauts-de-rueil/'>ARIEL RUEIL</a><br>99, avenue Paul Doumer 92500 RUEIL MALMAISON</div>`)[0];
+                popup_90c929df3cc73c7b3d8170dd3869d0d1.setContent(html_cf14e43ad3fa224a4f8aa6c731a6651c);
+            
+        
+
+        marker_053e865d7a23ccee02919d2625b88e59.bindPopup(popup_90c929df3cc73c7b3d8170dd3869d0d1)
+        ;
+
+        
+    
+    
+            var marker_9f0dd1e24192221a47938e05504b3372 = L.marker(
+                [48.8621243, 2.1955006],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_e6e5191c2c9c0a6a409afd7a4cd6fd06 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_9f0dd1e24192221a47938e05504b3372.setIcon(icon_e6e5191c2c9c0a6a409afd7a4cd6fd06);
+        
+    
+        var popup_43ac942bb87b2e0c861bfa98b9bff889 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_27807517ca9bc77437f5a771cda241bc = $(`<div id="html_27807517ca9bc77437f5a771cda241bc" style="width: 100.0%; height: 100.0%;"><a href='https://www.cinerueil.fr/ariel-hauts-de-rueil/'>ARIEL HAUTS DE RUEIL</a><br>58, avenue de Fouilleuse 92500 RUEIL MALMAISON</div>`)[0];
+                popup_43ac942bb87b2e0c861bfa98b9bff889.setContent(html_27807517ca9bc77437f5a771cda241bc);
+            
+        
+
+        marker_9f0dd1e24192221a47938e05504b3372.bindPopup(popup_43ac942bb87b2e0c861bfa98b9bff889)
+        ;
+
+        
+    
+    
+            var marker_e7ee0dd141cedde7b324f4fd6b086214 = L.marker(
+                [48.7934617, 2.5148577],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_358acb64a28ba9f143069c0644e319c4 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_e7ee0dd141cedde7b324f4fd6b086214.setIcon(icon_358acb64a28ba9f143069c0644e319c4);
+        
+    
+        var popup_3bc1ad0788120784d36cd99eca2d1ff3 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_5baba1beb3cc32f5b7dcfb3bd6a41d1e = $(`<div id="html_5baba1beb3cc32f5b7dcfb3bd6a41d1e" style="width: 100.0%; height: 100.0%;"><a href='https://www.cinemas-theatresaintmaur.com/'>LES 4 DELTA</a><br>81 bis avenue du Bac 94110 SAINT-MAUR-DES-FOSSÉS</div>`)[0];
+                popup_3bc1ad0788120784d36cd99eca2d1ff3.setContent(html_5baba1beb3cc32f5b7dcfb3bd6a41d1e);
+            
+        
+
+        marker_e7ee0dd141cedde7b324f4fd6b086214.bindPopup(popup_3bc1ad0788120784d36cd99eca2d1ff3)
+        ;
+
+        
+    
+    
+            var marker_f72c993d7b0b312bf4a724a1a85e442c = L.marker(
+                [48.9365694, 2.3590854],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_6993b5ed2dd800d9470d3d5e5117b879 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_f72c993d7b0b312bf4a724a1a85e442c.setIcon(icon_6993b5ed2dd800d9470d3d5e5117b879);
+        
+    
+        var popup_39445585b355ac90ad8950cfc2275a78 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_2e988eaa1c08d8d8a39eb5fe1e7068e3 = $(`<div id="html_2e988eaa1c08d8d8a39eb5fe1e7068e3" style="width: 100.0%; height: 100.0%;"><a href='https://www.lecranstdenis.org/'>L’ÉCRAN</a><br>14 Passage de l'Aqueduc 93200 SAINT-DENIS</div>`)[0];
+                popup_39445585b355ac90ad8950cfc2275a78.setContent(html_2e988eaa1c08d8d8a39eb5fe1e7068e3);
+            
+        
+
+        marker_f72c993d7b0b312bf4a724a1a85e442c.bindPopup(popup_39445585b355ac90ad8950cfc2275a78)
+        ;
+
+        
+    
+    
+            var marker_93b0ec3394fa3c6f3f0ea56ef678903d = L.marker(
+                [48.798598, 2.485669],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_9fe28445ecfead5c644528bd38faf6cb = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_93b0ec3394fa3c6f3f0ea56ef678903d.setIcon(icon_9fe28445ecfead5c644528bd38faf6cb);
+        
+    
+        var popup_ec6016113e7f4c2683a9ddba4bbb17a6 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_eda91e309dbc310ee1d009d959e58fdb = $(`<div id="html_eda91e309dbc310ee1d009d959e58fdb" style="width: 100.0%; height: 100.0%;"><a href='https://www.cinemas-theatresaintmaur.com/'>LE LIDO</a><br>Place Jacques Tati – 70 avenue de la République 94100 SAINT-MAUR-DES-FOSSÉS</div>`)[0];
+                popup_ec6016113e7f4c2683a9ddba4bbb17a6.setContent(html_eda91e309dbc310ee1d009d959e58fdb);
+            
+        
+
+        marker_93b0ec3394fa3c6f3f0ea56ef678903d.bindPopup(popup_ec6016113e7f4c2683a9ddba4bbb17a6)
+        ;
+
+        
+    
+    
+            var marker_30d96bc4e9d1c976197248d57455e50f = L.marker(
+                [48.9080985, 2.3338521],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_309532082a26569a995e754f04e3df6b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_30d96bc4e9d1c976197248d57455e50f.setIcon(icon_309532082a26569a995e754f04e3df6b);
+        
+    
+        var popup_c24191a876fae86ff65d08a0512ca59a = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_b23eece1a27763adddc9219203e4d581 = $(`<div id="html_b23eece1a27763adddc9219203e4d581" style="width: 100.0%; height: 100.0%;"><a href='https://www.espace-1789.com'>CINEMA ESPACE 1789</a><br>2-4, rue Alexandre-Bachelet 93400 SAINT-OUEN</div>`)[0];
+                popup_c24191a876fae86ff65d08a0512ca59a.setContent(html_b23eece1a27763adddc9219203e4d581);
+            
+        
+
+        marker_30d96bc4e9d1c976197248d57455e50f.bindPopup(popup_c24191a876fae86ff65d08a0512ca59a)
+        ;
+
+        
+    
+    
+            var marker_d8c02ec62dfe5724fa94668270575269 = L.marker(
+                [48.8705516, 2.2287072],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_4309f474f7d864ebca3e4fa9c9efaa7b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_d8c02ec62dfe5724fa94668270575269.setIcon(icon_4309f474f7d864ebca3e4fa9c9efaa7b);
+        
+    
+        var popup_4319f8f6e6d22919319ba713d5f1cc6e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_e286edfa834caeba8392d091fd4ae85a = $(`<div id="html_e286edfa834caeba8392d091fd4ae85a" style="width: 100.0%; height: 100.0%;"><a href='https://cinema-lecapitole.com/'>LE CAPITOLE</a><br>3, rue Ledru-Rollin 92150 SURESNES</div>`)[0];
+                popup_4319f8f6e6d22919319ba713d5f1cc6e.setContent(html_e286edfa834caeba8392d091fd4ae85a);
+            
+        
+
+        marker_d8c02ec62dfe5724fa94668270575269.bindPopup(popup_4319f8f6e6d22919319ba713d5f1cc6e)
+        ;
+
+        
+    
+    
+            var marker_bc1728e2d665127e1d68420a8d80a87a = L.marker(
+                [49.0301054, 2.0210473],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_f1dc87c134bc462638029d03b7f21461 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_bc1728e2d665127e1d68420a8d80a87a.setIcon(icon_f1dc87c134bc462638029d03b7f21461);
+        
+    
+        var popup_982bec375cdff25b88b4878715403033 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_01b96bb7f32796c9d55d09cc37e637c7 = $(`<div id="html_01b96bb7f32796c9d55d09cc37e637c7" style="width: 100.0%; height: 100.0%;"><a href='https://cine-antares.fr/'>L'ANTARES</a><br>1 Place du Cœur Battant 95490 VAUREAL</div>`)[0];
+                popup_982bec375cdff25b88b4878715403033.setContent(html_01b96bb7f32796c9d55d09cc37e637c7);
+            
+        
+
+        marker_bc1728e2d665127e1d68420a8d80a87a.bindPopup(popup_982bec375cdff25b88b4878715403033)
+        ;
+
+        
+    
+    
+            var marker_bbef78821ec7c80d9535b23e850f9986 = L.marker(
+                [48.7910333, 2.3881983],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_5c7ca6eb76ce68ea9fb60b3d34a247ff = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_bbef78821ec7c80d9535b23e850f9986.setIcon(icon_5c7ca6eb76ce68ea9fb60b3d34a247ff);
+        
+    
+        var popup_af9739aedab6c407564de65dfd6a3db9 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_85fb9421903514ce3604263e20e3361a = $(`<div id="html_85fb9421903514ce3604263e20e3361a" style="width: 100.0%; height: 100.0%;"><a href='https://3cines.vitry94.fr/'>3 CINES ROBESPIERRE</a><br>19 avenue Maximilien Robespierre 94400 VITRY SUR SEINE</div>`)[0];
+                popup_af9739aedab6c407564de65dfd6a3db9.setContent(html_85fb9421903514ce3604263e20e3361a);
+            
+        
+
+        marker_bbef78821ec7c80d9535b23e850f9986.bindPopup(popup_af9739aedab6c407564de65dfd6a3db9)
+        ;
+
+        
+    
+    
+            var marker_c02befd8ff7bd6d9fb9a34c8976f0341 = L.marker(
+                [44.840544, -0.581935],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_f81c4664f0ec8f2e2a87620ca74d1c5e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_c02befd8ff7bd6d9fb9a34c8976f0341.setIcon(icon_f81c4664f0ec8f2e2a87620ca74d1c5e);
+        
+    
+        var popup_c310c0bb272f799b43f0137941b80aa6 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_dcb7fdb8c9aa9bd9174843dcf6a9ce9d = $(`<div id="html_dcb7fdb8c9aa9bd9174843dcf6a9ce9d" style="width: 100.0%; height: 100.0%;"><a href='https://www.ugc.fr/cinema.html?id=1'>UGC Ciné Cité Bordeaux Gambetta</a><br>13-15, rue Georges Bonnac 33000 BORDEAUX</div>`)[0];
+                popup_c310c0bb272f799b43f0137941b80aa6.setContent(html_dcb7fdb8c9aa9bd9174843dcf6a9ce9d);
+            
+        
+
+        marker_c02befd8ff7bd6d9fb9a34c8976f0341.bindPopup(popup_c310c0bb272f799b43f0137941b80aa6)
+        ;
+
+        
+    
+    
+            var marker_28b7b37691e3c2716173f28f87099d26 = L.marker(
+                [44.8664843, -0.5611296],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_b5982f6083856b9d9a312ca498134d97 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_28b7b37691e3c2716173f28f87099d26.setIcon(icon_b5982f6083856b9d9a312ca498134d97);
+        
+    
+        var popup_86a6836f3feb984ac0e26d9c5b3007b7 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_e8aacda9e787d6778afdc15f213ceae4 = $(`<div id="html_e8aacda9e787d6778afdc15f213ceae4" style="width: 100.0%; height: 100.0%;"><a href='https://www.ugc.fr/cinema-ugc-cine-cite-bassins-a-flot.html'>UGC Ciné Cité Bassins à Flot</a><br>6 quai Virginie Hériot, Bassins N°2 33300 BORDEAUX</div>`)[0];
+                popup_86a6836f3feb984ac0e26d9c5b3007b7.setContent(html_e8aacda9e787d6778afdc15f213ceae4);
+            
+        
+
+        marker_28b7b37691e3c2716173f28f87099d26.bindPopup(popup_86a6836f3feb984ac0e26d9c5b3007b7)
+        ;
+
+        
+    
+    
+            var marker_70c48d2422178390dbda6977a1782d3c = L.marker(
+                [44.8115785, -0.5921905],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_8f93bd8f9f9d717f4a2f06583f425c3d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_70c48d2422178390dbda6977a1782d3c.setIcon(icon_8f93bd8f9f9d717f4a2f06583f425c3d);
+        
+    
+        var popup_77dcdbfcb01d44718d46721b83838fa6 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_b681f719dbba702d9cb5f90152418d43 = $(`<div id="html_b681f719dbba702d9cb5f90152418d43" style="width: 100.0%; height: 100.0%;"><a href='https://www.ugc.fr/cinema.html?id=42'>UGC Talence</a><br>Allée du 7ème art 33400 TALENCE</div>`)[0];
+                popup_77dcdbfcb01d44718d46721b83838fa6.setContent(html_b681f719dbba702d9cb5f90152418d43);
+            
+        
+
+        marker_70c48d2422178390dbda6977a1782d3c.bindPopup(popup_77dcdbfcb01d44718d46721b83838fa6)
+        ;
+
+        
+    
+    
+            var marker_fc07bdc09f88a674acb2f7071889c30a = L.marker(
+                [44.6619875, -1.1689216],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_82de82a8c2910e10b2f47136b9de9626 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_fc07bdc09f88a674acb2f7071889c30a.setIcon(icon_82de82a8c2910e10b2f47136b9de9626);
+        
+    
+        var popup_d1a965aefdee855e3bc09ac10e32af70 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_811e522242ca198bb6c84cd1de3cb8ee = $(`<div id="html_811e522242ca198bb6c84cd1de3cb8ee" style="width: 100.0%; height: 100.0%;"><a href='https://www.grandecran.fr/le-cinema/p9488-grand-ecran-arcachon-centre/'>GRAND ÉCRAN ARCACHON</a><br>9 bis avenue Gambetta 33120 ARCACHON</div>`)[0];
+                popup_d1a965aefdee855e3bc09ac10e32af70.setContent(html_811e522242ca198bb6c84cd1de3cb8ee);
+            
+        
+
+        marker_fc07bdc09f88a674acb2f7071889c30a.bindPopup(popup_d1a965aefdee855e3bc09ac10e32af70)
+        ;
+
+        
+    
+    
+            var marker_ee61c18f1cfd0de4e045301784c14848 = L.marker(
+                [44.5441738, -0.2643645],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_435ad6150cda81819f48bbfa12b6190c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_ee61c18f1cfd0de4e045301784c14848.setIcon(icon_435ad6150cda81819f48bbfa12b6190c);
+        
+    
+        var popup_c7278e551c51b600c4f0a72123674fb9 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_528d2f9e8788da1355062f494a3fbbc3 = $(`<div id="html_528d2f9e8788da1355062f494a3fbbc3" style="width: 100.0%; height: 100.0%;"><a href='https://www.grandecran.fr/le-cinema/w3321-multiplexe-grand-ecran-langon/'>GRAND ECRAN LANGON</a><br>Lieu-dit Pied Mourteau, Zone de Loisirs Family Place 33210 LANGON</div>`)[0];
+                popup_c7278e551c51b600c4f0a72123674fb9.setContent(html_528d2f9e8788da1355062f494a3fbbc3);
+            
+        
+
+        marker_ee61c18f1cfd0de4e045301784c14848.bindPopup(popup_c7278e551c51b600c4f0a72123674fb9)
+        ;
+
+        
+    
+    
+            var marker_3d25b683a03e80c20de073f32515c9ec = L.marker(
+                [44.552851, -0.244883],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_26efa2eeaffc789f52a42d0fa2e08425 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_3d25b683a03e80c20de073f32515c9ec.setIcon(icon_26efa2eeaffc789f52a42d0fa2e08425);
+        
+    
+        var popup_9755ff92473f2c57283d4da0c64c5a5a = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_01ebcba9decb60cb811d498d0d18016c = $(`<div id="html_01ebcba9decb60cb811d498d0d18016c" style="width: 100.0%; height: 100.0%;"><a href='https://www.grandecran.fr'>GRAND ECRAN LANGON RIO CENTRE-VILLE</a><br>16 allée Jean Jaurès 33210 LANGON</div>`)[0];
+                popup_9755ff92473f2c57283d4da0c64c5a5a.setContent(html_01ebcba9decb60cb811d498d0d18016c);
+            
+        
+
+        marker_3d25b683a03e80c20de073f32515c9ec.bindPopup(popup_9755ff92473f2c57283d4da0c64c5a5a)
+        ;
+
+        
+    
+    
+            var marker_2a6127725ffa4706c65a21ed9ea5a5b1 = L.marker(
+                [44.637693, -1.1547921],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_2508cc4bd2ccb3e75cb0fbe77e1a7ee7 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_2a6127725ffa4706c65a21ed9ea5a5b1.setIcon(icon_2508cc4bd2ccb3e75cb0fbe77e1a7ee7);
+        
+    
+        var popup_41743cf250aec3c336aac2dec650e890 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_8978e74ebb13fb38ca563fda750e34ab = $(`<div id="html_8978e74ebb13fb38ca563fda750e34ab" style="width: 100.0%; height: 100.0%;"><a href='https://www.grandecran.fr/le-cinema/p0764-grand-ecran-arcachon-la-teste/'>GRAND ÉCRAN LA TESTE DE BUCH</a><br>Zone Commerciale Cap Océan 33260 LA TESTE DE BUCH</div>`)[0];
+                popup_41743cf250aec3c336aac2dec650e890.setContent(html_8978e74ebb13fb38ca563fda750e34ab);
+            
+        
+
+        marker_2a6127725ffa4706c65a21ed9ea5a5b1.bindPopup(popup_41743cf250aec3c336aac2dec650e890)
+        ;
+
+        
+    
+    
+            var marker_8775750cb62706f481ec6914c98a801e = L.marker(
+                [44.9132762, -0.2375204],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_242170fbfb503c3f4eef3c4e08f03c21 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_8775750cb62706f481ec6914c98a801e.setIcon(icon_242170fbfb503c3f4eef3c4e08f03c21);
+        
+    
+        var popup_e8c6d66f4c4118caf3555a40570c4c47 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_489cf353c062892ee92b656cd3f11347 = $(`<div id="html_489cf353c062892ee92b656cd3f11347" style="width: 100.0%; height: 100.0%;"><a href='https://www.grandecran.fr/le-cinema/p2129-grand-ecran-libourne/'>GRAND ÉCRAN LIBOURNE</a><br>56 avenue Gallieni 33500 LIBOURNE</div>`)[0];
+                popup_e8c6d66f4c4118caf3555a40570c4c47.setContent(html_489cf353c062892ee92b656cd3f11347);
+            
+        
+
+        marker_8775750cb62706f481ec6914c98a801e.bindPopup(popup_e8c6d66f4c4118caf3555a40570c4c47)
+        ;
+
+        
+    
+    
+            var marker_bc3affd77abc8bed66f2ae867c3188e5 = L.marker(
+                [44.9069523, -0.485625],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_e9c3869ddfb5db0b3fd19782e7eb023f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_bc3affd77abc8bed66f2ae867c3188e5.setIcon(icon_e9c3869ddfb5db0b3fd19782e7eb023f);
+        
+    
+        var popup_4262faf201b0818a41f2e32ffbdb3d8b = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_2bbda22b4a89711f315ba0f9372d12be = $(`<div id="html_2bbda22b4a89711f315ba0f9372d12be" style="width: 100.0%; height: 100.0%;"><a href='https://www.grandecran.fr/le-cinema/w3356-grand-ecran-sainte-eulalie-bordeaux/'>CINEMA SAINTE EULALIE</a><br>Parvis des Frères Lumière, 26 Rue Adrien Piquet 33560 SAINTE-EULALIE</div>`)[0];
+                popup_4262faf201b0818a41f2e32ffbdb3d8b.setContent(html_2bbda22b4a89711f315ba0f9372d12be);
+            
+        
+
+        marker_bc3affd77abc8bed66f2ae867c3188e5.bindPopup(popup_4262faf201b0818a41f2e32ffbdb3d8b)
+        ;
+
+        
+    
+    
+            var marker_28f2ef88794ce7e4303b6d9aa21ca50c = L.marker(
+                [44.8131612, -0.5639856],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_45c66c6eb4876eb564f99cc9df77cee9 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_28f2ef88794ce7e4303b6d9aa21ca50c.setIcon(icon_45c66c6eb4876eb564f99cc9df77cee9);
+        
+    
+        var popup_1546621fd92d9be1215fbc55f458cff4 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_4e2586962b256d4cf94df8e44a2d52b2 = $(`<div id="html_4e2586962b256d4cf94df8e44a2d52b2" style="width: 100.0%; height: 100.0%;"><a href='https://cinemalalanterne.fr/'>CINÉMA LA LANTERNE</a><br>151 Bd Albert 1er 33130 BÈGLES</div>`)[0];
+                popup_1546621fd92d9be1215fbc55f458cff4.setContent(html_4e2586962b256d4cf94df8e44a2d52b2);
+            
+        
+
+        marker_28f2ef88794ce7e4303b6d9aa21ca50c.bindPopup(popup_1546621fd92d9be1215fbc55f458cff4)
+        ;
+
+        
+    
+    
+            var marker_87827c445e913013a504a0d06587bc74 = L.marker(
+                [49.1672, -0.2981805],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_bead392484aeb46860aa1ee4adc45862 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_87827c445e913013a504a0d06587bc74.setIcon(icon_bead392484aeb46860aa1ee4adc45862);
+        
+    
+        var popup_0e6df6fa070f827148ccd2c7dc03cef4 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_367e2781dceadba1cd843504441c9edd = $(`<div id="html_367e2781dceadba1cd843504441c9edd" style="width: 100.0%; height: 100.0%;"><a href='https://www.ugc.fr/cinema.html?id=27'>UGC Ciné Cité Mondeville</a><br>Centre Commercial Mondeville 2 - Route Nationale 13 14120 MONDEVILLE</div>`)[0];
+                popup_0e6df6fa070f827148ccd2c7dc03cef4.setContent(html_367e2781dceadba1cd843504441c9edd);
+            
+        
+
+        marker_87827c445e913013a504a0d06587bc74.bindPopup(popup_0e6df6fa070f827148ccd2c7dc03cef4)
+        ;
+
+        
+    
+    
+            var marker_2a98b537f366ef283886f97cdd4bcf05 = L.marker(
+                [50.634283, 3.0627879],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_abca75fbcf0e6a4f50364f00b3c7fab5 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_2a98b537f366ef283886f97cdd4bcf05.setIcon(icon_abca75fbcf0e6a4f50364f00b3c7fab5);
+        
+    
+        var popup_8b43c15db89be951f9b8fd8a87e3d238 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_14e1490306ae7acaeb30df0ca9fe320d = $(`<div id="html_14e1490306ae7acaeb30df0ca9fe320d" style="width: 100.0%; height: 100.0%;"><a href='https://www.ugc.fr/cinema.html?id=25'>UGC Ciné Cité Lille</a><br>40, rue de Béthune 59000 LILLE</div>`)[0];
+                popup_8b43c15db89be951f9b8fd8a87e3d238.setContent(html_14e1490306ae7acaeb30df0ca9fe320d);
+            
+        
+
+        marker_2a98b537f366ef283886f97cdd4bcf05.bindPopup(popup_8b43c15db89be951f9b8fd8a87e3d238)
+        ;
+
+        
+    
+    
+            var marker_621d3f449714520b6a366c4d12f3be3b = L.marker(
+                [50.6159019, 3.1255409],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_8b19cccc03aa1a3be45fa35dd3ba0270 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_621d3f449714520b6a366c4d12f3be3b.setIcon(icon_8b19cccc03aa1a3be45fa35dd3ba0270);
+        
+    
+        var popup_12e83c84357c3f4394c0ccf44091c1a5 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_5b6d384e3e77cd2f40c96d30a9865997 = $(`<div id="html_5b6d384e3e77cd2f40c96d30a9865997" style="width: 100.0%; height: 100.0%;"><a href='https://www.ugc.fr/cinema.html?id=24'>UGC Ciné Cité Villeneuve d'Ascq</a><br>Héronparc - 21, avenue de l'Avenir 59650 VILLENEUVE D'ASCQ</div>`)[0];
+                popup_12e83c84357c3f4394c0ccf44091c1a5.setContent(html_5b6d384e3e77cd2f40c96d30a9865997);
+            
+        
+
+        marker_621d3f449714520b6a366c4d12f3be3b.bindPopup(popup_12e83c84357c3f4394c0ccf44091c1a5)
+        ;
+
+        
+    
+    
+            var marker_c448da93bd873d38b42b0f3732d2b56f = L.marker(
+                [50.6364936, 3.0671153],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_96b4669034456ee54a40251bf40848a1 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_c448da93bd873d38b42b0f3732d2b56f.setIcon(icon_96b4669034456ee54a40251bf40848a1);
+        
+    
+        var popup_05e23bf346502c004a13c7259f1ba22d = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_534f2e9977bfda5162182d8e44647d54 = $(`<div id="html_534f2e9977bfda5162182d8e44647d54" style="width: 100.0%; height: 100.0%;"><a href='https://www.ugc.fr/cinema.html?id=45'>Le Métropole</a><br>26, rue des ponts de Comines 59000 LILLE</div>`)[0];
+                popup_05e23bf346502c004a13c7259f1ba22d.setContent(html_534f2e9977bfda5162182d8e44647d54);
+            
+        
+
+        marker_c448da93bd873d38b42b0f3732d2b56f.bindPopup(popup_05e23bf346502c004a13c7259f1ba22d)
+        ;
+
+        
+    
+    
+            var marker_20220b8bd3a6bb10b01a25a60f94d016 = L.marker(
+                [50.6335678, 3.0627767],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_98e71755e5a050afd664606230870689 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_20220b8bd3a6bb10b01a25a60f94d016.setIcon(icon_98e71755e5a050afd664606230870689);
+        
+    
+        var popup_8f748ee3abb686ae7308fc34764a0c7a = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_f5d434bdb942dbb0a1038988024de8fb = $(`<div id="html_f5d434bdb942dbb0a1038988024de8fb" style="width: 100.0%; height: 100.0%;"><a href='https://www.ugc.fr/cinema.html?id=46'>Le Majestic</a><br>54 rue de Béthune 59000 LILLE</div>`)[0];
+                popup_8f748ee3abb686ae7308fc34764a0c7a.setContent(html_f5d434bdb942dbb0a1038988024de8fb);
+            
+        
+
+        marker_20220b8bd3a6bb10b01a25a60f94d016.bindPopup(popup_8f748ee3abb686ae7308fc34764a0c7a)
+        ;
+
+        
+    
+    
+            var marker_c00780ab1ce49e5540e1e467b2207667 = L.marker(
+                [50.7211654, 3.1601697],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_793176585b4bfc4c1cac68eacfbeb44b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_c00780ab1ce49e5540e1e467b2207667.setIcon(icon_793176585b4bfc4c1cac68eacfbeb44b);
+        
+    
+        var popup_84ad48efee1fcd7115a2aa83a24b858e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_53b8efd70e125b8e021deb301858fcea = $(`<div id="html_53b8efd70e125b8e021deb301858fcea" style="width: 100.0%; height: 100.0%;"><a href='https://www.ugc.fr/cinema.html?id=52'>Les Écrans</a><br>4 promenade de la Fraternité – Centre commercial Saint Christophe 59200 TOURCOING</div>`)[0];
+                popup_84ad48efee1fcd7115a2aa83a24b858e.setContent(html_53b8efd70e125b8e021deb301858fcea);
+            
+        
+
+        marker_c00780ab1ce49e5540e1e467b2207667.bindPopup(popup_84ad48efee1fcd7115a2aa83a24b858e)
+        ;
+
+        
+    
+    
+            var marker_1a620c22c77afac7fe1b8538c72015e6 = L.marker(
+                [50.6819429, 2.8783525],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_07e792a800e1b711accc73ca188974c8 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_1a620c22c77afac7fe1b8538c72015e6.setIcon(icon_07e792a800e1b711accc73ca188974c8);
+        
+    
+        var popup_f286bd4af38e01bd8f48268656c84824 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_ea73f016c781b6597c588824e4ffbef1 = $(`<div id="html_ea73f016c781b6597c588824e4ffbef1" style="width: 100.0%; height: 100.0%;"><a href='http://cine-armentieres.fr/'>LES LUMIÈRES</a><br>1 Rue de la Gare 59280 ARMENTIÈRES</div>`)[0];
+                popup_f286bd4af38e01bd8f48268656c84824.setContent(html_ea73f016c781b6597c588824e4ffbef1);
+            
+        
+
+        marker_1a620c22c77afac7fe1b8538c72015e6.bindPopup(popup_f286bd4af38e01bd8f48268656c84824)
+        ;
+
+        
+    
+    
+            var marker_508e6d39ac8a587cb8f6309a48707bef = L.marker(
+                [50.174831, 3.23689],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_b7571f2b0f815e1ed622a68b5218bee9 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_508e6d39ac8a587cb8f6309a48707bef.setIcon(icon_b7571f2b0f815e1ed622a68b5218bee9);
+        
+    
+        var popup_06b0cd8137a337c232a4ca34b1471da0 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_bf97051153dadc77c7a4c7a3f9a4ccb8 = $(`<div id="html_bf97051153dadc77c7a4c7a3f9a4ccb8" style="width: 100.0%; height: 100.0%;"><a href='https://lepalacecambrai.com/'>Cinéma Le Palace</a><br>5 rue des Frères Marcy 59400 CAMBRAI</div>`)[0];
+                popup_06b0cd8137a337c232a4ca34b1471da0.setContent(html_bf97051153dadc77c7a4c7a3f9a4ccb8);
+            
+        
+
+        marker_508e6d39ac8a587cb8f6309a48707bef.bindPopup(popup_06b0cd8137a337c232a4ca34b1471da0)
+        ;
+
+        
+    
+    
+            var marker_c74b8c5a0c84445c25312c9f5571a38a = L.marker(
+                [50.6273783, 3.1263518],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_54331b2a1d7a210ba68256d7e5da2dc0 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_c74b8c5a0c84445c25312c9f5571a38a.setIcon(icon_54331b2a1d7a210ba68256d7e5da2dc0);
+        
+    
+        var popup_6a877d0e04a449929698825b115cc2b8 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_1733675c094623833037d13384e0af1b = $(`<div id="html_1733675c094623833037d13384e0af1b" style="width: 100.0%; height: 100.0%;"><a href='https://www.kino-cine.com/'>KINO CINÉ</a><br>Rue du Barreau 59650 VILLENEUVE D'ASCQ</div>`)[0];
+                popup_6a877d0e04a449929698825b115cc2b8.setContent(html_1733675c094623833037d13384e0af1b);
+            
+        
+
+        marker_c74b8c5a0c84445c25312c9f5571a38a.bindPopup(popup_6a877d0e04a449929698825b115cc2b8)
+        ;
+
+        
+    
+    
+            var marker_674fabf3936c837f7c419117255bb9ea = L.marker(
+                [50.6667783, 3.0751096],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_4d7c0bcb8fc1d10f7a23f1b20ef869bf = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_674fabf3936c837f7c419117255bb9ea.setIcon(icon_4d7c0bcb8fc1d10f7a23f1b20ef869bf);
+        
+    
+        var popup_d4dc6c8da8f0bed5e78ec6286c7e2d41 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_db01b19eda05ae3c5b7d9160b143547a = $(`<div id="html_db01b19eda05ae3c5b7d9160b143547a" style="width: 100.0%; height: 100.0%;"><a href='https://lepontdesarts-cinema.fr/'>LE PONT DES ARTS</a><br>7 place Doumer 59700 MARCQ EN BAROEUL</div>`)[0];
+                popup_d4dc6c8da8f0bed5e78ec6286c7e2d41.setContent(html_db01b19eda05ae3c5b7d9160b143547a);
+            
+        
+
+        marker_674fabf3936c837f7c419117255bb9ea.bindPopup(popup_d4dc6c8da8f0bed5e78ec6286c7e2d41)
+        ;
+
+        
+    
+    
+            var marker_578eda7983e96c34cd7516364dd0c1c4 = L.marker(
+                [45.8542614, 1.2848794],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_f51a19cfc269324c933e3333f8da8c16 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_578eda7983e96c34cd7516364dd0c1c4.setIcon(icon_f51a19cfc269324c933e3333f8da8c16);
+        
+    
+        var popup_75480c18a4e3b02fd1164f0532883d62 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_e539a6f8170f3c33a7aa8ba7c3f09077 = $(`<div id="html_e539a6f8170f3c33a7aa8ba7c3f09077" style="width: 100.0%; height: 100.0%;"><a href='https://www.grandecran.fr/le-cinema/p8001-grand-ecran-limoges-ester/'>GRAND ECRAN ESTER</a><br>260, rue Aristide Briand 87100 LIMOGES</div>`)[0];
+                popup_75480c18a4e3b02fd1164f0532883d62.setContent(html_e539a6f8170f3c33a7aa8ba7c3f09077);
+            
+        
+
+        marker_578eda7983e96c34cd7516364dd0c1c4.bindPopup(popup_75480c18a4e3b02fd1164f0532883d62)
+        ;
+
+        
+    
+    
+            var marker_d2a4a1fb6495ec457bc97602accb8d3b = L.marker(
+                [45.832872, 1.255247],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_c4888fdf74b979d3686dafaaa5494b7a = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_d2a4a1fb6495ec457bc97602accb8d3b.setIcon(icon_c4888fdf74b979d3686dafaaa5494b7a);
+        
+    
+        var popup_568b1d9f22f83752b4b8d7dba53d1e71 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_e72613b6fbf5b35a95b9093abf4dbaa7 = $(`<div id="html_e72613b6fbf5b35a95b9093abf4dbaa7" style="width: 100.0%; height: 100.0%;"><a href='https://www.grandecran.fr'>HORIZON GRAND ECRAN</a><br>9 - 11, Place Denis Dussoubs 87100 LIMOGES</div>`)[0];
+                popup_568b1d9f22f83752b4b8d7dba53d1e71.setContent(html_e72613b6fbf5b35a95b9093abf4dbaa7);
+            
+        
+
+        marker_d2a4a1fb6495ec457bc97602accb8d3b.bindPopup(popup_568b1d9f22f83752b4b8d7dba53d1e71)
+        ;
+
+        
+    
+    
+            var marker_d6e8a378f663f9b9c4e4c41a552e54a4 = L.marker(
+                [45.8331183, 1.2648299],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_bf983d34b8502f66e53bda4882d95887 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_d6e8a378f663f9b9c4e4c41a552e54a4.setIcon(icon_bf983d34b8502f66e53bda4882d95887);
+        
+    
+        var popup_1c147f1abf73b09e85b226c29d25f145 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_74b8a0602bc1ee8bb145c070620021a3 = $(`<div id="html_74b8a0602bc1ee8bb145c070620021a3" style="width: 100.0%; height: 100.0%;"><a href='https://www.grandecran.fr/le-cinema/p0169-grand-ecran-limoges-lido/'>LE LIDO</a><br>3, avenue du Général de Gaulle 87000 LIMOGES</div>`)[0];
+                popup_1c147f1abf73b09e85b226c29d25f145.setContent(html_74b8a0602bc1ee8bb145c070620021a3);
+            
+        
+
+        marker_d6e8a378f663f9b9c4e4c41a552e54a4.bindPopup(popup_1c147f1abf73b09e85b226c29d25f145)
+        ;
+
+        
+    
+    
+            var marker_f9ac4041a3d94f1ca5e92db2e5e925ee = L.marker(
+                [45.7844984, 4.852184],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_a138e87cbf0399f6f86ff39def21c1d9 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_f9ac4041a3d94f1ca5e92db2e5e925ee.setIcon(icon_a138e87cbf0399f6f86ff39def21c1d9);
+        
+    
+        var popup_cf77abbce9943dbb0f5eb8303c3bc029 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_e1a323fe221102f214cce0599bede7b2 = $(`<div id="html_e1a323fe221102f214cce0599bede7b2" style="width: 100.0%; height: 100.0%;"><a href='https://www.ugc.fr/cinema.html?id=32'>UGC Ciné Cité Internationale</a><br>Cité Internationale - 80, quai Charles de Gaulle 69006 LYON</div>`)[0];
+                popup_cf77abbce9943dbb0f5eb8303c3bc029.setContent(html_e1a323fe221102f214cce0599bede7b2);
+            
+        
+
+        marker_f9ac4041a3d94f1ca5e92db2e5e925ee.bindPopup(popup_cf77abbce9943dbb0f5eb8303c3bc029)
+        ;
+
+        
+    
+    
+            var marker_892b3773eb8528557f0be60efb76ab3e = L.marker(
+                [45.7404586, 4.8181777],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_de79edd04bde89dddfb10e0e3b5c5a06 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_892b3773eb8528557f0be60efb76ab3e.setIcon(icon_de79edd04bde89dddfb10e0e3b5c5a06);
+        
+    
+        var popup_5265901b4b03475eb7a3531ca138573e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_46867fe666c5624e7230933009ce5623 = $(`<div id="html_46867fe666c5624e7230933009ce5623" style="width: 100.0%; height: 100.0%;"><a href='https://www.ugc.fr/cinema.html?id=36'>UGC Ciné Cité Confluence</a><br>Pôle de loisirs de commerces - 112, cours Charlemagne 69002 LYON</div>`)[0];
+                popup_5265901b4b03475eb7a3531ca138573e.setContent(html_46867fe666c5624e7230933009ce5623);
+            
+        
+
+        marker_892b3773eb8528557f0be60efb76ab3e.bindPopup(popup_5265901b4b03475eb7a3531ca138573e)
+        ;
+
+        
+    
+    
+            var marker_2a12cc6739500f347a3f64e5716abf71 = L.marker(
+                [45.7696956, 4.8531532],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_dc428188b947a4160d4257f874ae70f5 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_2a12cc6739500f347a3f64e5716abf71.setIcon(icon_dc428188b947a4160d4257f874ae70f5);
+        
+    
+        var popup_cda1b8dcfe501b9ddf840d4135cad8b1 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_8679736659044adda0c60e3a897c1872 = $(`<div id="html_8679736659044adda0c60e3a897c1872" style="width: 100.0%; height: 100.0%;"><a href='https://www.ugc.fr/cinema.html?id=33'>UGC Astoria</a><br>31, cours Vitton 69006 LYON</div>`)[0];
+                popup_cda1b8dcfe501b9ddf840d4135cad8b1.setContent(html_8679736659044adda0c60e3a897c1872);
+            
+        
+
+        marker_2a12cc6739500f347a3f64e5716abf71.bindPopup(popup_cda1b8dcfe501b9ddf840d4135cad8b1)
+        ;
+
+        
+    
+    
+            var marker_b0f20a6339269fdc20ef8ed7d6d223df = L.marker(
+                [45.760451, 4.8562726],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_1e3f74aad4bb0be72327baf4283fe0bb = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_b0f20a6339269fdc20ef8ed7d6d223df.setIcon(icon_1e3f74aad4bb0be72327baf4283fe0bb);
+        
+    
+        var popup_ffafd30b390b0a56ace92bef82b22b04 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_41636e399a896c75ee3b9efab76a4ebc = $(`<div id="html_41636e399a896c75ee3b9efab76a4ebc" style="width: 100.0%; height: 100.0%;"><a href='https://www.ugc.fr/cinema.html?id=34'>UGC Ciné Cité Part-Dieu</a><br>Centre Commercial La Part-Dieu - Niveau 3 - Les Tables 69003 LYON</div>`)[0];
+                popup_ffafd30b390b0a56ace92bef82b22b04.setContent(html_41636e399a896c75ee3b9efab76a4ebc);
+            
+        
+
+        marker_b0f20a6339269fdc20ef8ed7d6d223df.bindPopup(popup_ffafd30b390b0a56ace92bef82b22b04)
+        ;
+
+        
+    
+    
+            var marker_3a98e1c6b63a9b5236ac96d98eaf0330 = L.marker(
+                [48.6899928, 6.1788013],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_472613ef4b1bc9fad3c463446e28a59f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_3a98e1c6b63a9b5236ac96d98eaf0330.setIcon(icon_472613ef4b1bc9fad3c463446e28a59f);
+        
+    
+        var popup_7195b0bc0b8fc97856f2cddd2cd84cd7 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_3c7b0958c71e9d2c6d0880dd4e495349 = $(`<div id="html_3c7b0958c71e9d2c6d0880dd4e495349" style="width: 100.0%; height: 100.0%;"><a href='https://www.ugc.fr/cinema.html?id=28'>UGC Nancy Saint Jean</a><br>54, rue Saint Jean 54000 NANCY</div>`)[0];
+                popup_7195b0bc0b8fc97856f2cddd2cd84cd7.setContent(html_3c7b0958c71e9d2c6d0880dd4e495349);
+            
+        
+
+        marker_3a98e1c6b63a9b5236ac96d98eaf0330.bindPopup(popup_7195b0bc0b8fc97856f2cddd2cd84cd7)
+        ;
+
+        
+    
+    
+            var marker_5289552755eb2e0988b4529e3a887fec = L.marker(
+                [48.6180666, 6.1743386],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_dbcfd2a2f70d166266a480ccaca1dbfc = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_5289552755eb2e0988b4529e3a887fec.setIcon(icon_dbcfd2a2f70d166266a480ccaca1dbfc);
+        
+    
+        var popup_c1a6cef211daf4add6c7b3a669381dae = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d87464fe00ae29bca5d111f943aa5815 = $(`<div id="html_d87464fe00ae29bca5d111f943aa5815" style="width: 100.0%; height: 100.0%;"><a href='https://www.ugc.fr/cinema.html?id=29'>UGC Ciné Cité Ludres</a><br>350, rue des Mazurots 54710 LUDRES</div>`)[0];
+                popup_c1a6cef211daf4add6c7b3a669381dae.setContent(html_d87464fe00ae29bca5d111f943aa5815);
+            
+        
+
+        marker_5289552755eb2e0988b4529e3a887fec.bindPopup(popup_c1a6cef211daf4add6c7b3a669381dae)
+        ;
+
+        
+    
+    
+            var marker_c3d77550c53f59ceb629438a4eb1632c = L.marker(
+                [48.6889331, 6.1787659],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_17a2404ce93ee0ba54b140ea595edbce = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_c3d77550c53f59ceb629438a4eb1632c.setIcon(icon_17a2404ce93ee0ba54b140ea595edbce);
+        
+    
+        var popup_2f9abfb387620d032c97dd9415d947dc = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_6f6ab175d2ad1e5767f3baf0bafa0ae3 = $(`<div id="html_6f6ab175d2ad1e5767f3baf0bafa0ae3" style="width: 100.0%; height: 100.0%;"><a href='https://www.cameo-nancy.fr/'>CAMEO SAINT SEBASTIEN</a><br>6 rue Léopold Lallement 54000 NANCY</div>`)[0];
+                popup_2f9abfb387620d032c97dd9415d947dc.setContent(html_6f6ab175d2ad1e5767f3baf0bafa0ae3);
+            
+        
+
+        marker_c3d77550c53f59ceb629438a4eb1632c.bindPopup(popup_2f9abfb387620d032c97dd9415d947dc)
+        ;
+
+        
+    
+    
+            var marker_03464bf547486832d95aa333faab6f57 = L.marker(
+                [48.6870352, 6.1721765],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_480a39c71c2f07d37c098d5fdfd3edcd = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_03464bf547486832d95aa333faab6f57.setIcon(icon_480a39c71c2f07d37c098d5fdfd3edcd);
+        
+    
+        var popup_380b96826030640550aaae22f06e575d = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_16df5119f951bddee57294f5b4632730 = $(`<div id="html_16df5119f951bddee57294f5b4632730" style="width: 100.0%; height: 100.0%;"><a href='https://www.cameo-nancy.fr/'>CAMEO COMMANDERIE</a><br>16 rue de la Commanderie 54000 NANCY</div>`)[0];
+                popup_380b96826030640550aaae22f06e575d.setContent(html_16df5119f951bddee57294f5b4632730);
+            
+        
+
+        marker_03464bf547486832d95aa333faab6f57.bindPopup(popup_380b96826030640550aaae22f06e575d)
+        ;
+
+        
+    
+    
+            var marker_1b8593dde43c108ed7fe1d4e19646fb5 = L.marker(
+                [48.6997282, 6.208253],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_783fa880e6045a2300ab97df43f7bd31 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_1b8593dde43c108ed7fe1d4e19646fb5.setIcon(icon_783fa880e6045a2300ab97df43f7bd31);
+        
+    
+        var popup_1ccb68c0651851c6a134d7e55c43f757 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_55c69ff2d78d4f32f77f5df02dae1202 = $(`<div id="html_55c69ff2d78d4f32f77f5df02dae1202" style="width: 100.0%; height: 100.0%;"><a href='http://www.cinema-royal.com/'>LE ROYAL</a><br>18, rue Saint Livier 54130 SAINT MAX</div>`)[0];
+                popup_1ccb68c0651851c6a134d7e55c43f757.setContent(html_55c69ff2d78d4f32f77f5df02dae1202);
+            
+        
+
+        marker_1b8593dde43c108ed7fe1d4e19646fb5.bindPopup(popup_1ccb68c0651851c6a134d7e55c43f757)
+        ;
+
+        
+    
+    
+            var marker_370ae6a5ca6797b7dbb144c506f510dc = L.marker(
+                [47.2240457, -1.6263075],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_cbdbb68686e903a900e62fe0e8d28068 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_370ae6a5ca6797b7dbb144c506f510dc.setIcon(icon_cbdbb68686e903a900e62fe0e8d28068);
+        
+    
+        var popup_68ccf49b8c5415a3801282b5b62b141e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_42cc8c710e4b4e72c5f7fd118150c1e8 = $(`<div id="html_42cc8c710e4b4e72c5f7fd118150c1e8" style="width: 100.0%; height: 100.0%;"><a href='https://www.ugc.fr/cinema.html?id=31'>UGC Ciné Cité Atlantis</a><br>Pôle commercial Atlantis - Place Jean Bart 44800 SAINT HERBLAIN</div>`)[0];
+                popup_68ccf49b8c5415a3801282b5b62b141e.setContent(html_42cc8c710e4b4e72c5f7fd118150c1e8);
+            
+        
+
+        marker_370ae6a5ca6797b7dbb144c506f510dc.bindPopup(popup_68ccf49b8c5415a3801282b5b62b141e)
+        ;
+
+        
+    
+    
+            var marker_69cceec6399b4549c0eecb1711e58653 = L.marker(
+                [48.5731031, 7.7639146],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_fea194d4fcd6c4e5cb866a4340d8c201 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_69cceec6399b4549c0eecb1711e58653.setIcon(icon_fea194d4fcd6c4e5cb866a4340d8c201);
+        
+    
+        var popup_811961e3223b147679367416d8efad33 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_4730971e4f9f85ed2b0e7df758936001 = $(`<div id="html_4730971e4f9f85ed2b0e7df758936001" style="width: 100.0%; height: 100.0%;"><a href='https://www.ugc.fr/cinema.html?id=30'>UGC Ciné Cité Strasbourg</a><br>25, avenue du Rhin 67100 STRASBOURG</div>`)[0];
+                popup_811961e3223b147679367416d8efad33.setContent(html_4730971e4f9f85ed2b0e7df758936001);
+            
+        
+
+        marker_69cceec6399b4549c0eecb1711e58653.bindPopup(popup_811961e3223b147679367416d8efad33)
+        ;
+
+        
+    
+    
+            var marker_754e1eeb432589979347b37277b0237d = L.marker(
+                [48.5817943, 7.7465658],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_3178e4ce20a4ece9730efd56ba9f8f51 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_754e1eeb432589979347b37277b0237d.setIcon(icon_3178e4ce20a4ece9730efd56ba9f8f51);
+        
+    
+        var popup_409fd6a0a3d6a854e996c00e156130dd = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_0f6ad80b110c261c99179b5b29617acb = $(`<div id="html_0f6ad80b110c261c99179b5b29617acb" style="width: 100.0%; height: 100.0%;"><a href='https://www.cine-vox.com/'>CINÉMA VOX</a><br>17, rue des Francs Bourgeois 67000 STRASBOURG</div>`)[0];
+                popup_409fd6a0a3d6a854e996c00e156130dd.setContent(html_0f6ad80b110c261c99179b5b29617acb);
+            
+        
+
+        marker_754e1eeb432589979347b37277b0237d.bindPopup(popup_409fd6a0a3d6a854e996c00e156130dd)
+        ;
+
+        
+    
+    
+            var marker_e57ddb672789127333aeadcadcac9399 = L.marker(
+                [48.5826499, 7.7459938],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_a4597c75d567cc0f02ce356baac525f5 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_e57ddb672789127333aeadcadcac9399.setIcon(icon_a4597c75d567cc0f02ce356baac525f5);
+        
+    
+        var popup_f1695df87f117298d4830ff676cbd11e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_823551499d1121fc9bbf89aec607d118 = $(`<div id="html_823551499d1121fc9bbf89aec607d118" style="width: 100.0%; height: 100.0%;"><a href='https://cinema-cosmos.eu/'>LE COSMOS</a><br>3, rue des Francs-Bourgeois 67000 STRASBOURG</div>`)[0];
+                popup_f1695df87f117298d4830ff676cbd11e.setContent(html_823551499d1121fc9bbf89aec607d118);
+            
+        
+
+        marker_e57ddb672789127333aeadcadcac9399.bindPopup(popup_f1695df87f117298d4830ff676cbd11e)
+        ;
+
+        
+    
+    
+            var marker_9713ae2fed4ce2a8503f95e587da58f3 = L.marker(
+                [48.5837834, 7.7426566],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_12d19851d5f3c5e7b3e4abd1b1585aa8 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_9713ae2fed4ce2a8503f95e587da58f3.setIcon(icon_12d19851d5f3c5e7b3e4abd1b1585aa8);
+        
+    
+        var popup_28d86253c0030ed52b81025d8d44a918 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_292f71f7159203569f5c7ccf1cd0e45c = $(`<div id="html_292f71f7159203569f5c7ccf1cd0e45c" style="width: 100.0%; height: 100.0%;"><a href='https://www.cinema-star.com'>LE STAR</a><br>27, rue du Jeu des Enfants 67000 STRASBOURG</div>`)[0];
+                popup_28d86253c0030ed52b81025d8d44a918.setContent(html_292f71f7159203569f5c7ccf1cd0e45c);
+            
+        
+
+        marker_9713ae2fed4ce2a8503f95e587da58f3.bindPopup(popup_28d86253c0030ed52b81025d8d44a918)
+        ;
+
+        
+    
+    
+            var marker_b956fd6b21bdf0945cefd81e2954d6be = L.marker(
+                [48.5827398, 7.7422966],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_d0cd3405360eef8b710bf5af88dc8825 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_b956fd6b21bdf0945cefd81e2954d6be.setIcon(icon_d0cd3405360eef8b710bf5af88dc8825);
+        
+    
+        var popup_c8551c458ee03e71b57eb56f91872059 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_0232e86f2ff5a2b54b0de53860ea70a6 = $(`<div id="html_0232e86f2ff5a2b54b0de53860ea70a6" style="width: 100.0%; height: 100.0%;"><a href='https://www.cinema-star.com'>LE STAR SAINT EXUPERY</a><br>18, rue du 22 Novembre 67000 STRASBOURG</div>`)[0];
+                popup_c8551c458ee03e71b57eb56f91872059.setContent(html_0232e86f2ff5a2b54b0de53860ea70a6);
+            
+        
+
+        marker_b956fd6b21bdf0945cefd81e2954d6be.bindPopup(popup_c8551c458ee03e71b57eb56f91872059)
+        ;
+
+        
+    
+    
+            var marker_0847181b5ef18047245041203580175f = L.marker(
+                [43.5714625, 1.4784928],
+                {}
+            ).addTo(marker_cluster_435d56008a89a6146b6d9056f603943a);
+        
+    
+            var icon_bdc5ba359c01ef7df21e350add007b67 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "film", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_0847181b5ef18047245041203580175f.setIcon(icon_bdc5ba359c01ef7df21e350add007b67);
+        
+    
+        var popup_c9fd8593f78d0c2d84b040ff1cafa68c = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_77281db1cbccaeb1c3882f3b2c5e836b = $(`<div id="html_77281db1cbccaeb1c3882f3b2c5e836b" style="width: 100.0%; height: 100.0%;"><a href='https://www.ugc.fr/cinema.html?id=56'>UGC Montaudran</a><br>Place Marcel Bouilloux-Lafont 31400 TOULOUSE</div>`)[0];
+                popup_c9fd8593f78d0c2d84b040ff1cafa68c.setContent(html_77281db1cbccaeb1c3882f3b2c5e836b);
+            
+        
+
+        marker_0847181b5ef18047245041203580175f.bindPopup(popup_c9fd8593f78d0c2d84b040ff1cafa68c)
+        ;
+
+        
+    
+    
+            marker_cluster_435d56008a89a6146b6d9056f603943a.addTo(map_a1887ddcaa10f4818a0963ae5d7af56d);
+        
+    
+            var layer_control_63f39854a257215da37ab32a72a3d98d_layers = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_632cf9f7366abb3b3e870b6a391fe62c,
+                },
+                overlays :  {
+                    "macro_element_435d56008a89a6146b6d9056f603943a" : marker_cluster_435d56008a89a6146b6d9056f603943a,
+                },
+            };
+            let layer_control_63f39854a257215da37ab32a72a3d98d = L.control.layers(
+                layer_control_63f39854a257215da37ab32a72a3d98d_layers.base_layers,
+                layer_control_63f39854a257215da37ab32a72a3d98d_layers.overlays,
+                {"autoZIndex": true, "collapsed": true, "position": "topright"}
+            ).addTo(map_a1887ddcaa10f4818a0963ae5d7af56d);
+
+        
+</script>
+</html>
