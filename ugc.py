@@ -261,26 +261,48 @@ class Map:
                     # icon=folium.Icon(color='green') if cinema.checked else folium.Icon(color='red'),
                     icon=folium.Icon(color='darkblue', icon="film") if cinema.checked else folium.Icon(color='blue', icon="film"),
                 ).add_to(marker_cluster)
-
         folium.LayerControl().add_to(m)
+        marker_cluster.layer_name = "UGC Illimité"
 
 
 
         # Add buttons for zooming to specific cities with absolute positioning using JavaScript
         buttons_html = """
-<div style="position: fixed; top: 10px; left: 50px; z-index: 1000;">
-    <button onclick="jumpToCity(48.5797, 7.7521, 16)">Strasbourg</button>
-    <button onclick="jumpToCity(48.8566, 2.3522, 12)">Paris</button>
-</div>
-<script>
-    function jumpToCity(lat, lng, zoom) {
+    <style>
+    .city-button {
+        background-color: #fff;
+        color: #333;
+        padding: 8px 16px;
+        margin: 4px;
+        border: 1px solid #bbb;
+        border-radius: 6px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+        cursor: pointer;
+        font-size: 15px;
+        transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    }
+    .city-button:hover {
+        background-color: #007bff;
+        color: #fff;
+        box-shadow: 0 4px 12px rgba(0,123,255,0.15);
+    }
+    </style>
+    <div style="position: fixed; top: 10px; left: 50px; z-index: 1000;">
+        <button class="city-button" onclick="jumpToCity(48.5797, 7.7521, 16)">Strasbourg</button>
+        <button class="city-button" onclick="jumpToCity(48.8566, 2.3522, 12)">Paris</button>
+        <button class="city-button" onclick="jumpToCity(50.6292, 3.0573, 14)">Lille</button>
+        <button class="city-button" onclick="jumpToCity(45.7640, 4.8357, 14)">Lyon</button>
+        <button class="city-button" onclick="jumpToCity(44.8378, -0.5792, 14)">Bordeaux</button>
+    </div>
+    <script>
+        function jumpToCity(lat, lng, zoom) {
         var map = Object.values(window).find(obj => obj instanceof L.Map);
         if (map) {
             map.setView([lat, lng], zoom);
         }
-    }
-</script>
-"""
+        }
+    </script>
+    """
         m.get_root().html.add_child(folium.Element(buttons_html))
 
         today = time.strftime("%Y-%m-%d")
