@@ -265,11 +265,10 @@ class Map:
         marker_cluster.layer_name = "UGC Illimité"
 
 
-
         # Add buttons for zooming to specific cities with absolute positioning using JavaScript
         buttons_html = """
-    <style>
-    .city-button {
+        <style>
+        .city-button {
         background-color: #fff;
         color: #333;
         padding: 8px 16px;
@@ -280,29 +279,61 @@ class Map:
         cursor: pointer;
         font-size: 15px;
         transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-    }
-    .city-button:hover {
+        }
+        .city-button:hover {
         background-color: #007bff;
         color: #fff;
         box-shadow: 0 4px 12px rgba(0,123,255,0.15);
-    }
-    </style>
-    <div style="position: fixed; top: 10px; left: 50px; z-index: 1000;">
+        }
+        </style>
+        <div style="position: fixed; top: 10px; left: 50px; z-index: 1000;">
         <button class="city-button" onclick="jumpToCity(48.5797, 7.7521, 16)">Strasbourg</button>
         <button class="city-button" onclick="jumpToCity(48.8566, 2.3522, 12)">Paris</button>
         <button class="city-button" onclick="jumpToCity(50.6292, 3.0573, 14)">Lille</button>
         <button class="city-button" onclick="jumpToCity(45.7640, 4.8357, 14)">Lyon</button>
         <button class="city-button" onclick="jumpToCity(44.8378, -0.5792, 14)">Bordeaux</button>
-    </div>
-    <script>
+        <input id="search-input" type="text" placeholder="Search location..." style="padding:8px; border-radius:6px; border:1px solid #bbb; font-size:15px; width:220px;">
+        <button class="city-button" onclick="searchLocation()">Go</button>
+        </div>
+        <script>
         function jumpToCity(lat, lng, zoom) {
-        var map = Object.values(window).find(obj => obj instanceof L.Map);
-        if (map) {
+            var map = Object.values(window).find(obj => obj instanceof L.Map);
+            if (map) {
             map.setView([lat, lng], zoom);
+            }
         }
+        function searchLocation() {
+            var query = document.getElementById('search-input').value;
+            if (!query) return;
+            fetch('https://nominatim.openstreetmap.org/search?format=json&q=' + encodeURIComponent(query))
+            .then(response => response.json())
+            .then(data => {
+                if (data && data.length > 0) {
+                var lat = parseFloat(data[0].lat);
+                var lon = parseFloat(data[0].lon);
+                var map = Object.values(window).find(obj => obj instanceof L.Map);
+                if (map) {
+                    map.setView([lat, lon], 15);
+                }
+                } else {
+                alert('Location not found.');
+                }
+            })
+            .catch(() => alert('Error searching location.'));
         }
-    </script>
-    """
+        // Add Enter key event listener for the search input
+        document.addEventListener('DOMContentLoaded', function() {
+            var input = document.getElementById('search-input');
+            if (input) {
+            input.addEventListener('keydown', function(event) {
+                if (event.key === 'Enter') {
+                searchLocation();
+                }
+            });
+            }
+        });
+        </script>
+        """
         m.get_root().html.add_child(folium.Element(buttons_html))
 
         today = time.strftime("%Y-%m-%d")
