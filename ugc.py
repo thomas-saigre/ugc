@@ -308,6 +308,7 @@ class Cinema:
 
         # 1. Cinemas OSM around address
         if geocoded:
+            assert origin
             radius = RADIUS_PRECISE if precise else RADIUS_CITY
             ranked = self._rank(geo.cinemas_around(*origin, radius), origin)
             if ranked:
@@ -342,6 +343,7 @@ class Cinema:
 
         # 3. Repli : point géocodé, sans objet OSM
         if geocoded:
+            assert origin
             self.lat, self.lon = origin
             self.note = ("aucun cinéma OSM trouvé, position de l'adresse" if precise
                          else "aucun cinéma OSM trouvé, position de la commune")
@@ -512,7 +514,7 @@ def draw_map(cinemas, filename="map.html"):
         for city, lat, lon, zoom in CITIES
     )
     controls = CONTROLS_TEMPLATE.replace("__BUTTONS__", buttons).replace("__MAP__", m.get_name())
-    m.get_root().html.add_child(folium.Element(controls))
+    m.get_root().html.add_child(folium.Element(controls))   # type: ignore
 
     missing_html = ""
     if missing:
@@ -527,7 +529,7 @@ def draw_map(cinemas, filename="map.html"):
       {missing_html}
     </div>
     """
-    m.get_root().html.add_child(folium.Element(info))
+    m.get_root().html.add_child(folium.Element(info))   # type: ignore
 
     m.save(filename)
     print(f"\nMap exported to {filename} ({len(cinemas) - len(missing)} cinemas in it, "
