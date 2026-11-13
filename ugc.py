@@ -521,11 +521,14 @@ def draw_map(cinemas, filename="map.html"):
         items = "".join(f"<li>{html.escape(c.name)} — {html.escape(c.address)}</li>" for c in missing)
         missing_html = (f"<details><summary>{len(missing)} cinéma(s) non localisé(s)</summary>"
                         f"<ul style='margin:4px 0; padding-left:18px'>{items}</ul></details>")
+    to_check_html = ""
+    if any(not c.checked and c.lat is not None and c.lon is not None for c in cinemas):
+        to_check_html = '<span style="color:#d97c2b">●</span> position à vérifier'
     info = f"""
     <div class="info-box">
       Source : <a href="https://www.ugc.fr/cinemas-acceptant-ui.html">ugc.fr</a><br>
       Date : {time.strftime("%Y-%m-%d")}<br>
-      <span style="color:#d97c2b">●</span> position à vérifier
+      {to_check_html}
       {missing_html}
     </div>
     """
