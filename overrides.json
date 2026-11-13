@@ -1,0 +1,48 @@
+{
+    "bd64fe38d02cd6fa1725966acea91935": {},
+    "f989cf20bfa1659a345eba259489801b": {},
+    "80412789c85c9ca781a3564e4bfa585c": {},
+    "12fe3f729f35b0bf9503c3917af29e71": {},
+    "343c2de7fb44028e9c92db90eec4fb1a": {},
+    "fd12eba6221fa9b2c418fc978e8b224e": {},
+    "5ef203cbd32bd5873e88deb30734d7fb": {},
+    "32daf70a4a345cf1942a4245768dbce0": {
+        "lat": 48.689983,
+        "lon": 6.178797,
+        "website": "https://www.ugc.fr/cinema.html?id=28",
+        "osm_type": "way",
+        "osm_id": 485279344
+    },
+    "9a32641b86480118c9eb79d9f42bafcd": {
+        "lat": 50.615901,
+        "lon": 3.125543,
+        "website": "https://www.ugc.fr/cinema.html?id=24",
+        "osm_type": "node",
+        "osm_id": 766483366
+    },
+    "1a869cbae93399b9024e9456ec726a5c": {},
+    "f4d839079d94b63157d5522d81a86a54": {},
+    "148a4452d6a0924ca758f556ddee4fa3": {
+       "lat": 48.8705334,
+       "lon": 2.3476486,
+       "website": "https://www.legrandrex.com",
+       "osm_type": "node",
+       "osm_id": 54188994
+    },
+    "419c11e1f7aa4545d59fa544cecc15e4": {
+       "lat": 48.8655,
+       "lon": 2.3236,
+       "website": "https://jeudepaume.org/",
+       "osm_type": "way",
+       "osm_id": 54188994
+    },
+    "6217de3bae6a62abecf7d7026d1320f5": {
+        "lat": 48.901869,
+        "lon": 2.309369,
+        "website": "https://www.ville-clichy.fr/310-cinema-clichy.htm",
+        "osm_type": "relation",
+        "osm_id": 1147086
+    },
+    "45f8adb271cc093a400373ad0ad5326f": {},
+    "c884db55daffaa2078170892d7f60f85": {}
+}
